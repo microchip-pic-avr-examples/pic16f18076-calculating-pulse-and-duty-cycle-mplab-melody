@@ -36,6 +36,21 @@
 
 <!-- Explain how to connect hardware and set up software. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
 
+Notes:
+Open MCC
+- select Melody
+- open Clock config
+     - select HFINTOSC_32MHz as the Current Oscillator Source Select
+     - select 16_MHz as the HF Internal Clock
+     - leave everything else as default
+- open config bits
+     - there are only changes within CONFIG1, no other CONFIG registers are changed from default
+     - deselect the External Oscillator Selection bits (should be 'Oscillator not enabled')
+     - select the HFINTOSC (32MHz) as the Reset Oscillator Selection bits
+     - select the Clock Out Enable bit (allow it to output Fosc/4 to a pin)
+- No other changes, click generate at the top of resource manager
+- build to make sure both the 'free' and 'pro' configurations are good
+
 ## Operation
 
 <!-- Explain how to operate the example. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
