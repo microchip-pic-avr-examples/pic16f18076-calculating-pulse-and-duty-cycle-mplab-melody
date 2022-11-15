@@ -31,6 +31,14 @@
     THIS SOFTWARE.
 */
 #include "mcc_generated_files/system/system.h"
+#include "Basic_Init.h"
+#include "CCP.h"
+#include "CLC_NCO.h"
+#include "IOC_w_Timer.h"
+#include "IOC_wo_Timer.h"
+#include "Polled_Input.h"
+#include "Timer1_Gate.h"
+
 
 /*
     Main application
@@ -56,8 +64,7 @@ int main(void)
     // Disable the Peripheral Interrupts 
     //INTERRUPT_PeripheralInterruptDisable(); 
 
-    uint8_t word = 0;
-    while(1)
-    {
+    while(1){
+        
     }    
 }
