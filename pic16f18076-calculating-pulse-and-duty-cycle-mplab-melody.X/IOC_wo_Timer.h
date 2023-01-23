@@ -40,8 +40,8 @@
 extern "C" {
 #endif /* __cplusplus */
 
-void IOC_wo_Timer_Pulse_Calculation(void);
-void IOC_wo_Timer_Calculation(void);
+void IOC_wo_Timer_Calculations(void);
+//void IOC_wo_Timer_Calculation(void);
 
 #ifdef	__cplusplus
 }

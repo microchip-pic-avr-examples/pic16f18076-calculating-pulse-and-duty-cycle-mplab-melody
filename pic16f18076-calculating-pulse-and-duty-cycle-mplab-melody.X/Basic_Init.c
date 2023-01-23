@@ -51,31 +51,10 @@ void IOC_w_Timer_Deinitialize(void){
 }
 
 void IOC_wo_Timer_Initialize(void){
-    
+    IOCBP = 0x20;
+    IOCBN = 0x20;
 }
 void IOC_wo_Timer_Deinitialize(void){
-    
-}
-
-void Polled_Input_Initialize(void){
-    //Pins
-    //NA
-    
-    //Peripherals
-    //NA
-    
-    //PPS
-    //NA
-    
-    //Method Specific
-    uint24_t pulse_count = 0;
-    uint24_t period_count = 0;
-    uint8_t period_countH = 0;
-    uint8_t period_countL = 0;
-    uint8_t pulse_countH = 0;
-    uint8_t pulse_countL = 0;
-    uint8_t duty_cycle = 0;
-}
-void Polled_Input_Deinitialize(void){
-    
+    IOCBP = 0x00;
+    IOCBN = 0x00;
 }

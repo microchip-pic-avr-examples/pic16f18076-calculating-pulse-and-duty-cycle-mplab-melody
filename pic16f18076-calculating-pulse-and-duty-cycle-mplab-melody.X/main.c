@@ -58,10 +58,6 @@ enum state {
 };
 
 
-
-
-
-
 int main(void)
 {
     SYSTEM_Initialize();
@@ -97,6 +93,7 @@ int main(void)
                     InitFlag = 0;
                     currentState = TIMER1;
                 }
+                //Pulse_Generator();
                 break;
 
             case TIMER1:
@@ -109,6 +106,7 @@ int main(void)
                     InitFlag = 0;
                     currentState = CLC_NCO1;
                 }
+                //Timer1_Calculations();
                 break;
                 
             case CLC_NCO1:
@@ -121,6 +119,7 @@ int main(void)
                     InitFlag = 0;
                     currentState = CLC_NCO2;
                 }
+                //CLC_NCO1_Calculations();
                 break;
            case CLC_NCO2:
                 if (InitFlag == 0) {
@@ -132,6 +131,7 @@ int main(void)
                     InitFlag = 0;
                     currentState = CLC_NCO3;
                 }
+                //CLC_NCO2_Calculations();
                 break;
 
             case CLC_NCO3:
@@ -144,6 +144,7 @@ int main(void)
                     InitFlag = 0;
                     currentState = CCP;
                 }
+                //CLC_NCO1_Calculations();
                 break;
                 
             case CCP:
@@ -156,6 +157,7 @@ int main(void)
                     InitFlag = 0;
                     currentState = IOC_W_TIMER;
                 }
+                //CCP_Calculations();
                 break;
            case IOC_W_TIMER:
                 if (InitFlag == 0) {
@@ -167,6 +169,7 @@ int main(void)
                     InitFlag = 0;
                     currentState = IOC_WO_TIMER;
                 }
+                //IOC_W_TIMER_Calculations();
                 break;
 
             case IOC_WO_TIMER:
@@ -179,6 +182,7 @@ int main(void)
                     InitFlag = 0;
                     currentState = POLLED_INPUT;
                 }
+                IOC_wo_Timer_Calculations();
                 break;
                 
             case POLLED_INPUT:
@@ -191,7 +195,7 @@ int main(void)
                     InitFlag = 0;
                     currentState = PULSE_GENERATOR;
                 }
-                Polled_Input_Pulse_Calculation();
+                Polled_Input_Calculations();
                 break;
         }
     }    
