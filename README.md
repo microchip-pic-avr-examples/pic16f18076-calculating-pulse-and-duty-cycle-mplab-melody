@@ -33,6 +33,14 @@
      - POT Click board™ [(MIKROE-3402)](https://www.mikroe.com/pot-click) -->
 
 ## Setup
+Generic Outline:
+-Standard beginning for a code example
+-Describe the general purpose of this code example
+-Mention how it is setup so the input signal is on the same pin (or the same signal is chained to several inputs)
+-Mention that the results can be viewed over UART by a logic analyzer
+-Mention how each of the sections work
+-Mention how the overall project works and how someelse can download the code and get it to work
+
 
 <!-- Explain how to connect hardware and set up software. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
 

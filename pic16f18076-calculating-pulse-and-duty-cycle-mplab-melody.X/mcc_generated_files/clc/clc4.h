@@ -1,15 +1,14 @@
 /**
- * System Driver Header File
+ * CLC4 Generated Driver API Header File
  * 
- * @file system.h
+ * @file clc4.h
  * 
- * @defgroup systemdriver System Driver
+ * @defgroup  clc4 CLC4
  * 
- * @brief This is the generated header file for the System Driver.
+ * @brief This is the generated header file for the CLC4 driver.
  *
- * @version Driver Version 1.0.0
+ * @version CLC4 Driver Version 1.0.1
 */
-
 /*
 © [2023] Microchip Technology Inc. and its subsidiaries.
 
@@ -31,31 +30,51 @@
     THIS SOFTWARE.
 */
 
-#ifndef SYSTEM_H
-#define	SYSTEM_H
+#ifndef CLC4_H
+ #define CLC4_H
 
-/**
-  Section: Included Files
-*/
 #include <xc.h>
 #include <stdint.h>
 #include <stdbool.h>
-#include <conio.h>
-#include "config_bits.h"
-#include "../system/clock.h"
-#include "../system/pins.h"
-#include "../clc/clc4.h"
-#include "../uart/eusart1.h"
-#include "../timer/tmr2.h"
-#include "../system/interrupt.h"
+
+uint8_t sw0_flag = 0;
+/**
+ * @ingroup clc4
+ * @brief  Initializes the CLC4. This routine configures the CLC4 specific control registers.
+ * @param none
+ * @return none
+ * 
+ */
+void CLC4_Initialize(void);
+
 
 /**
- * @ingroup systemdriver
- * @brief This initializes the system module and must be called before any other API is called.
- * This routine should only be called once during system initialization.
- * @param None
- * @return None
+ * @ingroup clc4
+ * @pre CLC4_Initialize() function should have been called before calling this function.
+ * @brief This is the CLC4 interrupt service routine called by the Interrupt Manager. Place your CLC4 interrupt code here.
+ * @param none
+ * @return none
+ */
+void CLC4_ISR(void);
+/**
+ * @ingroup clc
+ * @brief This routine is used to set the callback for the Interrupt.
+ * @param Callback Function to be called
+ * @return none
 */
-void SYSTEM_Initialize(void);
+void CLC4_CLCI_SetInterruptHandler(void (* InterruptHandler)(void));
 
-#endif //SYSTEM_H
+/**
+ * @ingroup clc4
+ * @brief This routine returns output pin status of the CLC module.
+ * @param  none
+ * @retval true - if pin Status is true.
+ * @retval false - if pin Status is false.
+ */
+bool CLC4_OutputStatusGet(void);
+
+#endif  // CLC4_H
+/**
+ End of File
+*/
+

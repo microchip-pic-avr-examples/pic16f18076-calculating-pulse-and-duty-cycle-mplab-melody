@@ -11,7 +11,7 @@
 */
 
 /*
-© [2022] Microchip Technology Inc. and its subsidiaries.
+© [2023] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -38,7 +38,7 @@ void CLOCK_Initialize(void)
 {
     // Set the CLOCK CONTROL module to the options selected in the user interface.
     // 
-    OSCCON2 = 0x0;
+    OSCCON2 = 0x60;
     // SOSCPWR Low power; 
     OSCCON3 = 0x0;
     // HFOEN disabled; MFOEN disabled; LFOEN disabled; SOSCEN disabled; ADOEN disabled; 

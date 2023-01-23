@@ -44,6 +44,40 @@
     Main application
 */
 
+
+enum state {
+    PULSE_GENERATOR,
+    TIMER1,
+    CLC_NCO1,
+    CLC_NCO2,
+    CLC_NCO3,
+    CCP,
+    IOC_W_TIMER,
+    IOC_WO_TIMER,
+    POLLED_INPUT,
+};
+
+
+
+void EUSART1_sendString(const char *str)
+{
+    while(*str)
+    {
+        while (!(EUSART1_IsTxReady()));
+        EUSART1_Write(*str++);
+    }
+}
+
+void EUSART1_sendInt(uint8_t number){
+    while (!(EUSART1_IsTxReady()));
+    EUSART1_Write(number);
+}
+
+void UART_test(void){
+    EUSART1_sendString("Hello World!\r\n");
+}
+
+
 int main(void)
 {
     SYSTEM_Initialize();
@@ -53,18 +87,127 @@ int main(void)
     // Use the following macros to: 
 
     // Enable the Global Interrupts 
-    //INTERRUPT_GlobalInterruptEnable(); 
+    INTERRUPT_GlobalInterruptEnable(); 
 
     // Disable the Global Interrupts 
     //INTERRUPT_GlobalInterruptDisable(); 
 
     // Enable the Peripheral Interrupts 
-    //INTERRUPT_PeripheralInterruptEnable(); 
+    INTERRUPT_PeripheralInterruptEnable(); 
 
     // Disable the Peripheral Interrupts 
     //INTERRUPT_PeripheralInterruptDisable(); 
+    
+    enum state currentState = PULSE_GENERATOR;
+    uint8_t InitFlag = 0;
 
     while(1){
-        
+        switch (currentState) {
+            case PULSE_GENERATOR:
+                if (InitFlag == 0) {
+                    EUSART1_sendString("\nWelcome to Pulse Generator");
+                    InitFlag = 1;
+                }            
+                else if (sw0_flag == 1) {
+                    sw0_flag = 0;
+                    InitFlag = 0;
+                    currentState = TIMER1;
+                }
+                break;
+
+            case TIMER1:
+                if (InitFlag == 0) {
+                    EUSART1_sendString("\nWelcome to Timer1");
+                    InitFlag = 1;
+                }            
+                else if (sw0_flag == 1) {
+                    sw0_flag = 0;
+                    InitFlag = 0;
+                    currentState = CLC_NCO1;
+                }
+                break;
+                
+            case CLC_NCO1:
+                if (InitFlag == 0) {
+                    EUSART1_sendString("\nWelcome to CLC and NCO 1");
+                    InitFlag = 1;
+                }            
+                else if (sw0_flag == 1) {
+                    sw0_flag = 0;
+                    InitFlag = 0;
+                    currentState = CLC_NCO2;
+                }
+                break;
+           case CLC_NCO2:
+                if (InitFlag == 0) {
+                    EUSART1_sendString("\nWelcome to CLC and NCO 2");
+                    InitFlag = 1;
+                }            
+                else if (sw0_flag == 1) {
+                    sw0_flag = 0;
+                    InitFlag = 0;
+                    currentState = CLC_NCO3;
+                }
+                break;
+
+            case CLC_NCO3:
+                if (InitFlag == 0) {
+                    EUSART1_sendString("\nWelcome to CLC and NCO 3");
+                    InitFlag = 1;
+                }            
+                else if (sw0_flag == 1) {
+                    sw0_flag = 0;
+                    InitFlag = 0;
+                    currentState = CCP;
+                }
+                break;
+                
+            case CCP:
+                if (InitFlag == 0) {
+                    EUSART1_sendString("\nWelcome to CCP");
+                    InitFlag = 1;
+                }            
+                else if (sw0_flag == 1) {
+                    sw0_flag = 0;
+                    InitFlag = 0;
+                    currentState = IOC_W_TIMER;
+                }
+                break;
+           case IOC_W_TIMER:
+                if (InitFlag == 0) {
+                    EUSART1_sendString("\nWelcome to IOC with Timer");
+                    InitFlag = 1;
+                }            
+                else if (sw0_flag == 1) {
+                    sw0_flag = 0;
+                    InitFlag = 0;
+                    currentState = IOC_WO_TIMER;
+                }
+                break;
+
+            case IOC_WO_TIMER:
+                if (InitFlag == 0) {
+                    EUSART1_sendString("\nWelcome to IOC without Timer");
+                    InitFlag = 1;
+                }            
+                else if (sw0_flag == 1) {
+                    sw0_flag = 0;
+                    InitFlag = 0;
+                    currentState = POLLED_INPUT;
+                }
+                break;
+                
+            case POLLED_INPUT:
+                if (InitFlag == 0) {
+                    EUSART1_sendString("\nWelcome to Polled Input");
+                    InitFlag = 1;
+                }            
+                else if (sw0_flag == 1) {
+                    sw0_flag = 0;
+                    InitFlag = 0;
+                    currentState = PULSE_GENERATOR;
+                }
+                break;
+        }
     }    
 }

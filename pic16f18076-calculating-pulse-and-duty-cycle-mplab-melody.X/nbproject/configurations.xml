@@ -7,6 +7,9 @@
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
+        <logicalFolder name="clc" displayName="clc" projectFiles="true">
+          <itemPath>mcc_generated_files/clc/clc4.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="system" displayName="system" projectFiles="true">
           <itemPath>mcc_generated_files/system/system.h</itemPath>
           <itemPath>mcc_generated_files/system/interrupt.h</itemPath>
@@ -14,7 +17,23 @@
           <itemPath>mcc_generated_files/system/pins.h</itemPath>
           <itemPath>mcc_generated_files/system/config_bits.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="timer" displayName="timer" projectFiles="true">
+          <itemPath>mcc_generated_files/timer/timer_interface.h</itemPath>
+          <itemPath>mcc_generated_files/timer/tmr2.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="uart" displayName="uart" projectFiles="true">
+          <itemPath>mcc_generated_files/uart/uart_drv_interface.h</itemPath>
+          <itemPath>mcc_generated_files/uart/uart_types.h</itemPath>
+          <itemPath>mcc_generated_files/uart/eusart1.h</itemPath>
+        </logicalFolder>
       </logicalFolder>
+      <itemPath>Basic_Init.h</itemPath>
+      <itemPath>CCP.h</itemPath>
+      <itemPath>CLC_NCO.h</itemPath>
+      <itemPath>IOC_w_Timer.h</itemPath>
+      <itemPath>IOC_wo_Timer.h</itemPath>
+      <itemPath>Polled_Input.h</itemPath>
+      <itemPath>Timer1_Gate.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -26,6 +45,11 @@
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
+        <logicalFolder name="clc" displayName="clc" projectFiles="true">
+          <logicalFolder name="src" displayName="src" projectFiles="true">
+            <itemPath>mcc_generated_files/clc/src/clc4.c</itemPath>
+          </logicalFolder>
+        </logicalFolder>
         <logicalFolder name="system" displayName="system" projectFiles="true">
           <logicalFolder name="src" displayName="src" projectFiles="true">
             <itemPath>mcc_generated_files/system/src/pins.c</itemPath>
@@ -35,8 +59,25 @@
             <itemPath>mcc_generated_files/system/src/interrupt.c</itemPath>
           </logicalFolder>
         </logicalFolder>
+        <logicalFolder name="timer" displayName="timer" projectFiles="true">
+          <logicalFolder name="src" displayName="src" projectFiles="true">
+            <itemPath>mcc_generated_files/timer/src/tmr2.c</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="uart" displayName="uart" projectFiles="true">
+          <logicalFolder name="src" displayName="src" projectFiles="true">
+            <itemPath>mcc_generated_files/uart/src/eusart1.c</itemPath>
+          </logicalFolder>
+        </logicalFolder>
       </logicalFolder>
       <itemPath>main.c</itemPath>
+      <itemPath>Basic_Init.c</itemPath>
+      <itemPath>Timer1_Gate.c</itemPath>
+      <itemPath>CLC_NCO.c</itemPath>
+      <itemPath>CCP.c</itemPath>
+      <itemPath>IOC_w_Timer.c</itemPath>
+      <itemPath>IOC_wo_Timer.c</itemPath>
+      <itemPath>Polled_Input.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -45,6 +86,9 @@
       <itemPath>pic16f18076-calculating-pulse-and-duty-cycle-mplab-melody.mc3</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="pro" type="2">
@@ -194,7 +238,7 @@
         <targetDevice>PIC16F18076</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>nEdbgTool</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.36</languageToolchainVersion>
         <platform>3</platform>
