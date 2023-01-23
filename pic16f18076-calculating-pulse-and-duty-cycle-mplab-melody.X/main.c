@@ -169,7 +169,7 @@ int main(void)
                     InitFlag = 0;
                     currentState = IOC_WO_TIMER;
                 }
-                //IOC_W_TIMER_Calculations();
+                IOC_w_Timer_Calculations();
                 break;
 
             case IOC_WO_TIMER:

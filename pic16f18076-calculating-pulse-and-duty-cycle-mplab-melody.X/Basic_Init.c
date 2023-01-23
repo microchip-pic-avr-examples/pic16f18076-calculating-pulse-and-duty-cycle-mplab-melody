@@ -42,19 +42,3 @@ void CCP_Initialize(void){
 void CCP_Deinitialize(void){
     
 }
-
-void IOC_w_Timer_Initialize(void){
-    
-}
-void IOC_w_Timer_Deinitialize(void){
-    
-}
-
-void IOC_wo_Timer_Initialize(void){
-    IOCBP = 0x20;
-    IOCBN = 0x20;
-}
-void IOC_wo_Timer_Deinitialize(void){
-    IOCBP = 0x00;
-    IOCBN = 0x00;
-}

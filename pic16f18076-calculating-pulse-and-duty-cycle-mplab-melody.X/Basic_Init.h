@@ -53,14 +53,6 @@ void CLC_NCO_Deinitialize3(void);
 void CCP_Initialize(void);
 void CCP_Deinitialize(void);
 
-void IOC_w_Timer_Initialize(void);
-void IOC_w_Timer_Deinitialize(void);
-
-void IOC_wo_Timer_Initialize(void);
-void IOC_wo_Timer_Deinitialize(void);
-
-void Polled_Input_Initialize(void);
-void Polled_Input_Deinitialize(void);  
     
 #ifdef	__cplusplus
 }

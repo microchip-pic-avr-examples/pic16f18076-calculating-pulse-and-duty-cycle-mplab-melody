@@ -37,12 +37,24 @@
 #include <stdio.h>
 
 
+
 #ifdef	__cplusplus
 extern "C" {
 #endif /* __cplusplus */
 
-void IOC_w_Timer_Pulse_Calculation(void);
-void IOC_w_Timer_Calculation(void);
+    
+    
+extern const struct TMR_INTERFACE Timer0;
+
+void IOC_w_Timer_Calculations(void);
+
+
+void Timer0_Start(void);
+void Timer0_Stop(void);
+void Timer0_OverflowCallbackRegister(void (* CallbackHandler)(void));
+uint16_t Timer0_Read(void);
+void Timer0_Initialize(void);
+void Timer0_Write(size_t timerVal);
 
 #ifdef	__cplusplus
 }
