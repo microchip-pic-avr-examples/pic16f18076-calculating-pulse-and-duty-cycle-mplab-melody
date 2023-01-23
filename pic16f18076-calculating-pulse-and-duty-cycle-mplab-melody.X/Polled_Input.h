@@ -41,8 +41,7 @@
 extern "C" {
 #endif /* __cplusplus */
 
-void Polled_Input_Pulse_Calculation(void);
-void Polled_Input_Duty_Cycle_Calculation(void);
+void Polled_Input_Calculations(void);
 
 #ifdef	__cplusplus
 }

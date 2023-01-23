@@ -266,6 +266,12 @@ void EUSART1_FramingErrorCallbackRegister(void (* callbackHandler)(void));
  */
 void EUSART1_OverrunErrorCallbackRegister(void (* callbackHandler)(void));
 
+void EUSART1_sendString(const char *str);
+
+void EUSART1_sendInt(uint8_t number);
+
+void UART_test(void);
+
 #ifdef __cplusplus  // Provide C++ Compatibility
 
     }

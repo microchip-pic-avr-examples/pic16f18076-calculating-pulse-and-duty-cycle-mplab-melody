@@ -59,23 +59,7 @@ enum state {
 
 
 
-void EUSART1_sendString(const char *str)
-{
-    while(*str)
-    {
-        while (!(EUSART1_IsTxReady()));
-        EUSART1_Write(*str++);
-    }
-}
 
-void EUSART1_sendInt(uint8_t number){
-    while (!(EUSART1_IsTxReady()));
-    EUSART1_Write(number);
-}
-
-void UART_test(void){
-    EUSART1_sendString("Hello World!\r\n");
-}
 
 
 int main(void)
@@ -207,6 +191,7 @@ int main(void)
                     InitFlag = 0;
                     currentState = PULSE_GENERATOR;
                 }
+                Polled_Input_Pulse_Calculation();
                 break;
         }
     }    

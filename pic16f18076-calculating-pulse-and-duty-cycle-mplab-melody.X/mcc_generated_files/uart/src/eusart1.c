@@ -237,3 +237,21 @@ void EUSART1_OverrunErrorCallbackRegister(void (* callbackHandler)(void))
     }    
 }
 
+// Added by Application Engineer (NOT GENERATED FROM MCC/MELODY)
+void EUSART1_sendString(const char *str)
+{
+    while(*str)
+    {
+        while (!(EUSART1_IsTxReady()));
+        EUSART1_Write(*str++);
+    }
+}
+
+void EUSART1_sendInt(uint8_t number){
+    while (!(EUSART1_IsTxReady()));
+    EUSART1_Write(number);
+}
+
+void UART_test(void){
+    EUSART1_sendString("Hello World!\r\n");
+}
