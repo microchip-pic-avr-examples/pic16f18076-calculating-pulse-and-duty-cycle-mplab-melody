@@ -34,6 +34,7 @@
       <itemPath>IOC_wo_Timer.h</itemPath>
       <itemPath>Polled_Input.h</itemPath>
       <itemPath>Timer1_Gate.h</itemPath>
+      <itemPath>Pulse_Generator.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -78,6 +79,7 @@
       <itemPath>IOC_w_Timer.c</itemPath>
       <itemPath>IOC_wo_Timer.c</itemPath>
       <itemPath>Polled_Input.c</itemPath>
+      <itemPath>Pulse_Generator.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

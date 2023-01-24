@@ -37,6 +37,7 @@
 #include "IOC_w_Timer.h"
 #include "IOC_wo_Timer.h"
 #include "Polled_Input.h"
+#include "Pulse_Generator.h"
 #include "Timer1_Gate.h"
 
 
@@ -93,7 +94,7 @@ int main(void)
                     InitFlag = 0;
                     currentState = TIMER1;
                 }
-                //Pulse_Generator();
+                Pulse_Generator();
                 break;
 
             case TIMER1:
