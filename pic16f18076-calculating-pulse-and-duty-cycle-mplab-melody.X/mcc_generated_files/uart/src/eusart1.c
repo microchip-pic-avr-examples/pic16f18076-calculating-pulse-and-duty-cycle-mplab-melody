@@ -255,3 +255,14 @@ void EUSART1_sendInt(uint8_t number){
 void UART_test(void){
     EUSART1_sendString("Hello World!\r\n");
 }
+
+void EUSART1_sendAllData(uint8_t pulse_countH, uint8_t pulse_countL, uint8_t period_countH, uint8_t period_countL,  uint8_t duty_cycle){
+    EUSART1_sendString("\nPULSE: ");
+    EUSART1_sendInt(pulse_countH); 
+    EUSART1_sendInt(pulse_countL); 
+    EUSART1_sendString("\nPD: ");
+    EUSART1_sendInt(period_countH);
+    EUSART1_sendInt(period_countL);
+    EUSART1_sendString("\nDC: ");
+    EUSART1_sendInt(duty_cycle);
+}

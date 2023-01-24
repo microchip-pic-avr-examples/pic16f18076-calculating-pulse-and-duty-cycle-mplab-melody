@@ -134,14 +134,7 @@ void IOC_w_Timer_Calculations(void){
         
         duty_cycle = (pulse_count << 8)/ period_count;
         
-        EUSART1_sendString("\nPULSE: ");
-        EUSART1_sendInt(pulse_countH); 
-        EUSART1_sendInt(pulse_countL); 
-        EUSART1_sendString("\nPD: ");
-        EUSART1_sendInt(period_countH);
-        EUSART1_sendInt(period_countL);
-        EUSART1_sendString("\nDC: ");
-        EUSART1_sendInt(duty_cycle);
+        EUSART1_sendAllData(pulse_countH, pulse_countL, period_countH, period_countL, duty_cycle);
 
         pulse_count = 0;
         period_count = 0;

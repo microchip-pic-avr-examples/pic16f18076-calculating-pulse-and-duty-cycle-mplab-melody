@@ -272,6 +272,8 @@ void EUSART1_sendInt(uint8_t number);
 
 void UART_test(void);
 
+void EUSART1_sendAllData(uint8_t pulse_countH, uint8_t pulse_countL, uint8_t period_countH, uint8_t period_countL,  uint8_t duty_cycle);
+
 #ifdef __cplusplus  // Provide C++ Compatibility
 
     }
