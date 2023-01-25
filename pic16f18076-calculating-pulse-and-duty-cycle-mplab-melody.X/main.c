@@ -99,7 +99,7 @@ int main(void)
 
             case TIMER1:
                 if (InitFlag == 0) {
-                    EUSART1_sendString("\nWelcome to Timer1");
+                    EUSART1_sendString("\nWelcome to Timer1 Gate");
                     InitFlag = 1;
                 }            
                 else if (sw0_flag == 1) {
@@ -107,7 +107,7 @@ int main(void)
                     InitFlag = 0;
                     currentState = CLC_NCO1;
                 }
-                //Timer1_Calculations();
+                Timer1_Gate_Calculations();
                 break;
                 
             case CLC_NCO1:

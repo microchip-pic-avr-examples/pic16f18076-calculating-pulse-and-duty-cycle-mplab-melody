@@ -10,13 +10,6 @@
 #include "Basic_Init.h"
 #include "mcc_generated_files/system/system.h"
 
-void Timer1_Gate_Initialize(void){
-    
-}
-void Timer1_Gate_Deinitialize(void){
-    
-}
-
 void CLC_NCO_Initialize1(void){
     
 }
