@@ -39,16 +39,17 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif /* __cplusplus */
+    
+ extern const struct TMR_INTERFACE Timer1;
 
-void Timer1_Gate_Initialize(void);
-void Timer1_Gate_Deinitialize(void);
-
-void CLC_NCO_Initialize1(void);
-void CLC_NCO_Deinitialize1(void);
-void CLC_NCO_Initialize2(void);
-void CLC_NCO_Deinitialize2(void);
-void CLC_NCO_Initialize3(void);
-void CLC_NCO_Deinitialize3(void);
+void Timer1_StartSinglePulseAcquisition(void);
+void Timer1_Start(void);
+void Timer1_Write(size_t timerVal);
+void Timer1_Stop(void);
+void Timer1_Initialize_Timer1Gate(void);
+void Timer1_Initialize_CLCNCO1(void);
+void Timer1_OverflowCallbackRegister(void (* CallbackHandler)(void));
+void Timer1_Initialize(void);
 
 void CCP_Initialize(void);
 void CCP_Deinitialize(void);

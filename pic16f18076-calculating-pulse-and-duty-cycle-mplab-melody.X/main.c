@@ -113,6 +113,7 @@ int main(void)
             case CLC_NCO1:
                 if (InitFlag == 0) {
                     EUSART1_sendString("\nWelcome to CLC and NCO 1");
+                    CLC_NCO1_Initialize();
                     InitFlag = 1;
                 }            
                 else if (sw0_flag == 1) {
@@ -120,7 +121,7 @@ int main(void)
                     InitFlag = 0;
                     currentState = CLC_NCO2;
                 }
-                //CLC_NCO1_Calculations();
+                CLC_NCO1_Calculations();
                 break;
            case CLC_NCO2:
                 if (InitFlag == 0) {
