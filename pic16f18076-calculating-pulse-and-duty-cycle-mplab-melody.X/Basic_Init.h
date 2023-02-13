@@ -40,6 +40,7 @@
 extern "C" {
 #endif /* __cplusplus */
     
+ extern const struct TMR_INTERFACE Timer0;   
  extern const struct TMR_INTERFACE Timer1;
 
 void Timer1_StartSinglePulseAcquisition(void);
@@ -51,8 +52,27 @@ void Timer1_Initialize_CLCNCO1(void);
 void Timer1_OverflowCallbackRegister(void (* CallbackHandler)(void));
 void Timer1_Initialize(void);
 
+void Timer0_Start(void);
+void Timer0_Stop(void);
+void Timer0_OverflowCallbackRegister(void (* CallbackHandler)(void));
+uint16_t Timer0_Read(void);
+void Timer0_Initialize(void);
+void Timer0_Write(size_t timerVal);
+
+void NCO1_Initialize(void);
+void CLC1_Initialize(void);
+void CLC2_Initialize(void);
+void CLC1_CLCI_SetInterruptHandler(void (* InterruptHandler)(void));
+
+void Timer1_Gate_Initialize(void);
+
 void CCP_Initialize(void);
 void CCP_Deinitialize(void);
+
+void TMR0_Reset(void);
+void IOC_w_Timer_Initialize(void);
+void IOC_wo_Timer_Initialize(void);
+void IOC_Reset(void);
 
     
 #ifdef	__cplusplus

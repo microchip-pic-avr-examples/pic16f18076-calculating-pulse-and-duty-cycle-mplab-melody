@@ -41,7 +41,6 @@ void Polled_Input_Calculations(void){
     pulse_countL = (pulse_count & 0xFF);
 
     duty_cycle = (pulse_count << 8)/ period_count;
-
     
     EUSART1_sendAllData(pulse_countH, pulse_countL, period_countH, period_countL, duty_cycle);
 

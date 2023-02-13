@@ -46,10 +46,7 @@ void CLC_NCO3_Calculations(void);
 
 void CLC_NCO1_Initialize(void);
 
-void NCO1_Initialize(void);
-void CLC1_Initialize(void);
-void CLC2_Initialize(void);
-void CLC1_CLCI_SetInterruptHandler(void (* InterruptHandler)(void));
+
 
 void send_NCO_measurement(void);
 void send_TMR1_measurement(void);

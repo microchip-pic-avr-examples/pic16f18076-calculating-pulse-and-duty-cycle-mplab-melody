@@ -11,9 +11,9 @@
 #include "Basic_Init.h"
 #include "mcc_generated_files/system/system.h"
 
+
 void IOC_wo_Timer_Calculations(void){
-    IOCBP = 0x20;
-    IOCBN = 0x20;
+    IOC_wo_Timer_Initialize();
     uint24_t pulse_count = 0;
     uint24_t period_count = 0;
     uint8_t period_countH = 0;
@@ -57,7 +57,5 @@ void IOC_wo_Timer_Calculations(void){
 
         __delay_ms(1);
 
-    IOCBP = 0x00;
-    IOCBN = 0x00;
-
+    IOC_Reset();
 }

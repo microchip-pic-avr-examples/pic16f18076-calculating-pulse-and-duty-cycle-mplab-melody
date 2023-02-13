@@ -14,105 +14,96 @@ void Pulse_Generator(void){
     TRISAbits.TRISA3 = 0;
     ANSELAbits.ANSA3 = 0;
     uint8_t i = 0;
+    
+    //// 10% DC 0x1A////
     for (i = 0; i < 10; i++){
-            LATAbits.LATA3 = 1;
+        LATAbits.LATA3 = 1;
 
-            __delay_us(900);
-            LATAbits.LATA3 = 0;
+        __delay_us(100);
+        LATAbits.LATA3 = 0;
 
-            __delay_us(100);
-        }
+        __delay_us(900);
+    }
         
+    //// 20% DC 0x33////
+    for (i = 0; i < 10; i++){
+        LATAbits.LATA3 = 1;
+
+        __delay_us(200);
+        LATAbits.LATA3 = 0;
+
+        __delay_us(800);
+    }
         
-        //// 10% DC 0x1A////
-        for (i = 0; i < 10; i++){
-            LATAbits.LATA3 = 1;
+    //// 30% DC 0x4D////
+    for (i = 0; i < 10; i++){
+        LATAbits.LATA3 = 1;
 
-            __delay_us(100);
-            LATAbits.LATA3 = 0;
+        __delay_us(300);
+        LATAbits.LATA3 = 0;
 
-            __delay_us(900);
-        }
+        __delay_us(700);
+    }
         
-        //// 20% DC 0x33////
-        for (i = 0; i < 10; i++){
-            LATAbits.LATA3 = 1;
+    //// 40% DC 0x66////
+    for (i = 0; i < 10; i++){
+        LATAbits.LATA3 = 1;
 
-            __delay_us(200);
-            LATAbits.LATA3 = 0;
+        __delay_us(400);
+        LATAbits.LATA3 = 0;
 
-            __delay_us(800);
-        }
+        __delay_us(600);
+    }
         
-        //// 30% DC 0x4D////
-        for (i = 0; i < 10; i++){
-            LATAbits.LATA3 = 1;
+    //// 50% DC 0x80////
+    for (i = 0; i < 10; i++){
+        LATAbits.LATA3 = 1;
 
-            __delay_us(300);
-            LATAbits.LATA3 = 0;
+        __delay_us(500);
+        LATAbits.LATA3 = 0;
 
-            __delay_us(700);
-        }
+        __delay_us(500);
+    }
         
-        //// 40% DC 0x66////
-        for (i = 0; i < 10; i++){
-            LATAbits.LATA3 = 1;
+    //// 60% DC 0x9A////
+    for (i = 0; i < 10; i++){
+        LATAbits.LATA3 = 1;
 
-            __delay_us(400);
-            LATAbits.LATA3 = 0;
+        __delay_us(600);
+        LATAbits.LATA3 = 0;
 
-            __delay_us(600);
-        }
+        __delay_us(400);
+    }
+
+    //// 70% DC 0xB3////
+    for (i = 0; i < 10; i++){
+        LATAbits.LATA3 = 1;
+
+        __delay_us(700);
+        LATAbits.LATA3 = 0;
+
+        __delay_us(300);
+    }
         
-        //// 50% DC 0x80////
-        for (i = 0; i < 10; i++){
-            LATAbits.LATA3 = 1;
+    //// 80% DC 0xCC////
+    for (i = 0; i < 10; i++){
+        LATAbits.LATA3 = 1;
 
-            __delay_us(500);
-            LATAbits.LATA3 = 0;
+        __delay_us(800);
+        LATAbits.LATA3 = 0;
 
-            __delay_us(500);
-        }
-        
-        //// 60% DC 0x9A////
-        for (i = 0; i < 10; i++){
-            LATAbits.LATA3 = 1;
+        __delay_us(200);
+    }
 
-            __delay_us(600);
-            LATAbits.LATA3 = 0;
+    //// 90% DC 0xE6////
+    for (i = 0; i < 10; i++){
+        LATAbits.LATA3 = 1;
 
-            __delay_us(400);
-        }
+        __delay_us(900);
+        LATAbits.LATA3 = 0;
 
-        //// 70% DC 0xB3////
-        for (i = 0; i < 10; i++){
-            LATAbits.LATA3 = 1;
-
-            __delay_us(700);
-            LATAbits.LATA3 = 0;
-
-            __delay_us(300);
-        }
-        
-        //// 80% DC 0xCC////
-        for (i = 0; i < 10; i++){
-            LATAbits.LATA3 = 1;
-
-            __delay_us(800);
-            LATAbits.LATA3 = 0;
-
-            __delay_us(200);
-        }
-        
-        //// 90% DC 0xE6////
-        for (i = 0; i < 10; i++){
-            LATAbits.LATA3 = 1;
-
-            __delay_us(900);
-            LATAbits.LATA3 = 0;
-
-            __delay_us(100);
-        }
+        __delay_us(100);
+    }
             
     TRISAbits.TRISA3 = 1;
     ANSELAbits.ANSA3 = 1;

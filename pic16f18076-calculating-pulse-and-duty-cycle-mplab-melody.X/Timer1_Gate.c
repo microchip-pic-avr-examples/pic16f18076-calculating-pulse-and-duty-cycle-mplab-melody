@@ -11,13 +11,8 @@
 #include "Basic_Init.h"
 #include "mcc_generated_files/system/system.h"
 
-
-
 void Timer1_Gate_Calculations(void){
-    T1GPPS = 0xD; //RB5->TMR1:T1G;
-    
-    Timer1_Initialize_Timer1Gate();
-    
+        Timer1_Gate_Initialize();
     // TIMER1 GATE DUTY CYCLE MEASUREMENT //
         TMR1GIF = 0;                            //Clear Gate Flag
         TMR1IF = 0;                             //Clear Timer1 Flag
@@ -85,5 +80,4 @@ void Timer1_Gate_Calculations(void){
         //Uncomment 2 lines below if pulses are longer than 4.1ms
         //EUSART1_sendString("\n");  
         //EUSART1_sendInt(overflow_count);
-
 }
