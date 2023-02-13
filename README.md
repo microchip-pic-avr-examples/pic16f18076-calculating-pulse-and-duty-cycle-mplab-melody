@@ -21,13 +21,18 @@
 
 ## Hardware Used
 
-- PIC16F18076 Curiosity Nano [(DM182029)](https://www.microchip.com/en-us/development-tool/EV53Z50A)
+- PIC16F18076 Curiosity Nano [(DM182029)](https://www.microchip.com/en-us/development-tool/EV53Z50A) (x2)
 
 ## Introduction
 Many times is it desirable to quantify the pulse width of a periodic signal, such as a servo motor, or duty cycle of a pulse-width modulated signal. This code example demonstrates six different methods for measuring a pulse and a period and calculating the duty cycle based off that measured pulse and period all while using the PIC16F18076. 
 
-
 ## Setup
+### Hardware Connections
+
+Connect two PIC16F18076 Curiousity Nano board together following the diagram in Figure 1.
+
+*Figure 1 - Building the Circuit*
+
 Generic Outline:
 - Standard beginning for a code example
 - Describe the general purpose of this code example
@@ -49,3 +54,5 @@ Notes:
 ## Summary
 
 <!-- Summarize what the example has shown -->
+
+Note: A second Cnano was used to simulate the input signal at varying duty cycles.  Replacing the pulse generating Cnano with a different input pulse generator may be advantageous depending on the application.
