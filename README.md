@@ -2,61 +2,44 @@
 
 [![MCHP](images/microchip.png)](https://www.microchip.com)
 
-# Update the title for pic16f18076-calculating-pulse-and-duty-cycle-mplab-melody here
+# Various Solutions for Calculating a Pulse and Duty Cycle
 
 <!-- This is where the introduction to the example goes, including mentioning the peripherals used -->
 
 ## Related Documentation
 
-<!-- Any information about an application note or tech brief can be linked here. Use unbreakable links!
-     In addition a link to the device family landing page and relevant peripheral pages as well:
-     - [AN3381 - Brushless DC Fan Speed Control Using Temperature Input and Tachometer Feedback](https://microchip.com/00003381/)
-     - [PIC18F-Q10 Family Product Page](https://www.microchip.com/design-centers/8-bit/pic-mcus/device-selection/pic18f-q10-product-family) -->
+- [PIC16F18076 Data Sheet](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/PIC16F18056-76-28-40-Pin-Microcontroller-Data-Sheet-40002325B.pdf)
+- [PIC16F18076 Family Product Page](https://www.microchip.com/wwwproducts/en/PIC16F18076)
+- [Various Solutions for Calculating a Pulse and Duty Cycle Application Note](https://www.microchip.com/en-us/application-notes/an3324) <!--UPDATE APP NOTE NUMBER TO WHAT IT SHOULD BE (the new one)-->
 
 ## Software Used
 
-<!-- All software used in this example must be listed here. Use unbreakable links!
-     - MPLAB® X IDE 5.30 or newer [(microchip.com/mplab/mplab-x-ide)](http://www.microchip.com/mplab/mplab-x-ide)
-     - MPLAB® XC8 2.10 or a newer compiler [(microchip.com/mplab/compilers)](http://www.microchip.com/mplab/compilers)
-     - MPLAB® Code Configurator (MCC) 3.95.0 or newer [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
-     - MPLAB® Code Configurator (MCC) Device Libraries PIC10 / PIC12 / PIC16 / PIC18 MCUs [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
-     - Microchip PIC18F-Q Series Device Support (1.4.109) or newer [(packs.download.microchip.com/)](https://packs.download.microchip.com/) -->
-
-- MPLAB® X IDE 6.0.0 or newer [(MPLAB® X IDE 6.0)](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_MPAE_Examples&utm_content=pic16f18076-calculating-pulse-and-duty-cycle-mplab-melody-github)
-- MPLAB® XC8 2.36.0 or newer compiler [(MPLAB® XC8 2.36)](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_MPAE_Examples&utm_content=pic16f18076-calculating-pulse-and-duty-cycle-mplab-melody-github)
+- [MPLAB® X IDE](http://www.microchip.com/mplab/mplab-x-ide) **6.0.0** or newer
+- [MPLAB Xpress IDE](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xpress) (alternative to MPLAB X IDE)
+- [MPLAB XC8 Compiler](http://www.microchip.com/mplab/compilers) **2.36** or a newer compiler 
+- [Microchip PIC16F1xxxx Series Device Support pack](https://packs.download.microchip.com/) **1.15.191** or newer Device Pack
 
 ## Hardware Used
 
-<!-- All hardware used in this example must be listed here. Use unbreakable links!
-     - PIC18F47Q10 Curiosity Nano [(DM182029)](https://www.microchip.com/Developmenttools/ProductDetails/DM182029)
-     - Curiosity Nano Base for Click boards™ [(AC164162)](https://www.microchip.com/Developmenttools/ProductDetails/AC164162)
-     - POT Click board™ [(MIKROE-3402)](https://www.mikroe.com/pot-click) -->
+- PIC16F18076 Curiosity Nano [(DM182029)](https://www.microchip.com/en-us/development-tool/EV53Z50A)
+
+## Introduction
+Many times is it desirable to quantify the pulse width of a periodic signal, such as a servo motor, or duty cycle of a pulse-width modulated signal. This code example demonstrates six different methods for measuring a pulse and a period and calculating the duty cycle based off that measured pulse and period all while using the PIC16F18076. 
+
 
 ## Setup
 Generic Outline:
--Standard beginning for a code example
--Describe the general purpose of this code example
--Mention how it is setup so the input signal is on the same pin (or the same signal is chained to several inputs)
--Mention that the results can be viewed over UART by a logic analyzer
--Mention how each of the sections work
--Mention how the overall project works and how someelse can download the code and get it to work
+- Standard beginning for a code example
+- Describe the general purpose of this code example
+- Mention how it is setup so the input signal is on the same pin (or the same signal is chained to several inputs)
+- Mention that the results can be viewed over UART by a logic analyzer
+- Mention how each of the sections work
+- Mention how the overall project works and how someone else can download the code and get it to work
 
 
 <!-- Explain how to connect hardware and set up software. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
 
 Notes:
-Open MCC
-- select Melody
-- open Clock config
-     - select HFINTOSC_32MHz as the Current Oscillator Source Select
-     - select 16_MHz as the HF Internal Clock
-     - leave everything else as default
-- open config bits
-     - there are only changes within CONFIG1, no other CONFIG registers are changed from default
-     - deselect the External Oscillator Selection bits (should be 'Oscillator not enabled')
-     - select the HFINTOSC (32MHz) as the Reset Oscillator Selection bits
-     - select the Clock Out Enable bit (allow it to output Fosc/4 to a pin)
-- No other changes, click generate at the top of resource manager
 - build to make sure both the 'free' and 'pro' configurations are good
 
 ## Operation
