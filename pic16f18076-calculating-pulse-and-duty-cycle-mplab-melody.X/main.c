@@ -100,6 +100,7 @@ int main(void)
             case TIMER1:
                 if (InitFlag == 0) {
                     EUSART1_sendString("\nWelcome to Timer1 Gate");
+                    Timer1_Gate_Initialize();
                     InitFlag = 1;
                 }            
                 else if (sw0_flag == 1) {
@@ -126,6 +127,7 @@ int main(void)
            case CLC_NCO2:
                 if (InitFlag == 0) {
                     EUSART1_sendString("\nWelcome to CLC and NCO 2");
+                    //CLC_NCO2_Initialize();
                     InitFlag = 1;
                 }            
                 else if (sw0_flag == 1) {
@@ -139,6 +141,7 @@ int main(void)
             case CLC_NCO3:
                 if (InitFlag == 0) {
                     EUSART1_sendString("\nWelcome to CLC and NCO 3");
+                    //CLC_NCO2_Initialize();
                     InitFlag = 1;
                 }            
                 else if (sw0_flag == 1) {
@@ -152,6 +155,7 @@ int main(void)
             case CCP:
                 if (InitFlag == 0) {
                     EUSART1_sendString("\nWelcome to CCP");
+                    //CCP_Initialize();
                     InitFlag = 1;
                 }            
                 else if (sw0_flag == 1) {

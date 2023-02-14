@@ -12,7 +12,7 @@
 #include "mcc_generated_files/system/system.h"
 
 void Timer1_Gate_Calculations(void){
-        Timer1_Gate_Initialize();
+    //    Timer1_Gate_Initialize();
     // TIMER1 GATE DUTY CYCLE MEASUREMENT //
         TMR1GIF = 0;                            //Clear Gate Flag
         TMR1IF = 0;                             //Clear Timer1 Flag
@@ -23,7 +23,6 @@ void Timer1_Gate_Calculations(void){
         //Uncomment line below if pulses are longer than 4.1ms
         //uint8_t overflow_count = 0;             //Clear the overflow_count 
         
-        
         Timer1_StartSinglePulseAcquisition();   //Enable T1GGO bit, start measuring the pulse
         while(!TMR1GIF){                        //Wait until the Gate Flag is set
         //Uncomment 3 lines below if pulse are longer than 4.1ms
@@ -33,7 +32,6 @@ void Timer1_Gate_Calculations(void){
         } 
         uint8_t period_low = TMR1L;             //save period low byte data
         uint16_t period_high = TMR1H;            //save period high byte data
-    
         
     //TIMER1 GATE PULSE MEASUREMENT //    
         TMR1GIF = 0;                            

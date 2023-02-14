@@ -289,6 +289,21 @@ static void CLC1_DefaultCLCI_ISR(void){
     //Use CLC1_CLCI_SetInterruptHandler() function to use Custom ISR
 }
 
+void CLC_NCO1_Pins_PPS(void){
+    ANSELAbits.ANSA1 = 0;
+    ANSELAbits.ANSA2 = 0;
+    TRISAbits.TRISA5 = 0;
+    ANSELAbits.ANSA5 = 0;
+    ANSELCbits.ANSC0 = 0;
+    TRISCbits.TRISC2 = 0;
+    ANSELCbits.ANSC2 = 0;
+    RA5PPS = 0x01;  //RA5->CLC1:CLC1OUT;
+    RC2PPS = 0x02;  //RC2->CLC2:CLC2OUT;
+    T1CKIPPS = 0x10; //RC0->TMR1:T1CKI;
+    T1GPPS = 0xD; //RB5->TMR1:T1G;
+    CLCIN0PPS = 0x2; //RA2->CLC1:CLCIN0;
+    CLCIN1PPS = 0x1; //RA1->CLC2:CLCIN1;
+}
 
 
 

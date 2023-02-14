@@ -64,6 +64,8 @@ void CLC1_Initialize(void);
 void CLC2_Initialize(void);
 void CLC1_CLCI_SetInterruptHandler(void (* InterruptHandler)(void));
 
+void CLC_NCO1_Pins_PPS(void);
+
 void Timer1_Gate_Initialize(void);
 
 void CCP_Initialize(void);

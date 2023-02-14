@@ -73,19 +73,7 @@ void CLC_NCO1_Initialize(void){
     CLC1_Initialize();
     CLC2_Initialize();
     Timer1_Initialize_CLCNCO1();
-    ANSELAbits.ANSA1 = 0;
-    ANSELAbits.ANSA2 = 0;
-    TRISAbits.TRISA5 = 0;
-    ANSELAbits.ANSA5 = 0;
-    ANSELCbits.ANSC0 = 0;
-    TRISCbits.TRISC2 = 0;
-    ANSELCbits.ANSC2 = 0;
-    RA5PPS = 0x01;  //RA5->CLC1:CLC1OUT;
-    RC2PPS = 0x02;  //RC2->CLC2:CLC2OUT;
-    T1CKIPPS = 0x10; //RC0->TMR1:T1CKI;
-    T1GPPS = 0xD; //RB5->TMR1:T1G;
-    CLCIN0PPS = 0x2; //RA2->CLC1:CLCIN0;
-    CLCIN1PPS = 0x1; //RA1->CLC2:CLCIN1;
+    CLC_NCO1_Pins_PPS();
     setup_for_new_measurement(); 
 }
 uint16_t cycles = 0;
