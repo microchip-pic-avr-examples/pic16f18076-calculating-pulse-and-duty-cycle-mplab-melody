@@ -11,8 +11,6 @@
 #include "Basic_Init.h"
 #include "mcc_generated_files/system/system.h"
 
-
-
 void send_NCO_measurement(void){
     EUSART1_sendInt(NCO1ACCU);
     EUSART1_sendInt(NCO1ACCH);
@@ -32,6 +30,10 @@ void clear_TMR1_Value(void){
     TMR1H = 0x00;
     TMR1L = 0x01;
 }
+void MAX_TMR1_Value(void){
+    TMR1H = 0xFF;
+    TMR1L = 0xFF;
+}
 void send_DC_Calculation(void){
     //calculate the duty cycle and output as an 8-bit value, 0-255 = 0-100%, e.g. 127 = 50%
     uint24_t NCO_val = 0;
@@ -45,6 +47,19 @@ void send_DC_Calculation(void){
     
     EUSART1_sendInt(duty_cycle);    
 }
+void send_DC_Calculation_MT(void){
+    //calculate the duty cycle and output as an 8-bit value, 0-255 = 0-100%, e.g. 127 = 50%
+    uint24_t NCO_val = 0;
+    uint24_t TMR1_val = 0;
+    uint24_t duty_cycle = 0;
+    
+    TMR1_val = 0x3F;
+    NCO_val = ((NCO1ACCH << 8) + NCO1ACCL); //CONFIRMED
+    
+    duty_cycle = NCO_val/TMR1_val;
+    
+    EUSART1_sendInt(duty_cycle);
+}
 void send_measurement(void){
     EUSART1_sendString("\nPULSE:"); //NCO
     send_NCO_measurement();
@@ -52,7 +67,15 @@ void send_measurement(void){
     send_TMR1_measurement();
     EUSART1_sendString("\nDC:");
     send_DC_Calculation();
-} 
+}
+void send_measurement_MT(void){
+    EUSART1_sendString("\nPULSE:"); //NCO
+    send_NCO_measurement();
+    EUSART1_sendString("\nPD:"); //Timer1
+    send_TMR1_measurement();
+    EUSART1_sendString("\nDC:");
+    send_DC_Calculation_MT();
+}
 void clear_flags(void){
     PIR1bits.TMR1IF = 0;
     PIR2bits.NCO1IF = 0; 
@@ -66,16 +89,6 @@ void setup_for_new_measurement(void){
     NCO1CONbits.EN = 1; //NCO enable
 }
 
-
-void CLC_NCO1_Initialize(void){
-    T1CON = 0x0;
-    NCO1_Initialize();
-    CLC1_Initialize();
-    CLC2_Initialize();
-    Timer1_Initialize_CLCNCO1();
-    CLC_NCO1_Pins_PPS();
-    setup_for_new_measurement(); 
-}
 uint16_t cycles = 0;
 
 void CLC_NCO1_Calculations(void){
@@ -116,7 +129,36 @@ void CLC_NCO1_Calculations(void){
        __delay_ms(1);
 }
 void CLC_NCO2_Calculations(void){
+        if (PIR1bits.TMR1IF || PIR2bits.NCO1IF || cycles > 99){
+            
+            if (PIR1bits.TMR1IF){
+                NCO1CONbits.EN = 0;
+                Timer1_Stop();
+                MAX_TMR1_Value();
+                
+                send_measurement_MT();
+                setup_for_new_measurement();
+            }
+            else if (PIR2bits.NCO1IF){
+                NCO1CONbits.EN = 0;
+                Timer1_Stop();
+                
+                send_measurement();
+                setup_for_new_measurement();
+            }
+            else{
+                NCO1CONbits.EN = 0;
+                Timer1_Stop();
+                
+                send_measurement();
+                setup_for_new_measurement();
+            }
+        }
 
+        else{
+            cycles++;
+        }
+       __delay_ms(1); 
 }
 void CLC_NCO3_Calculations(void){
 

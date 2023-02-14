@@ -40,11 +40,9 @@
 #include "Pulse_Generator.h"
 #include "Timer1_Gate.h"
 
-
 /*
     Main application
 */
-
 
 enum state {
     PULSE_GENERATOR,
@@ -57,7 +55,6 @@ enum state {
     IOC_WO_TIMER,
     POLLED_INPUT,
 };
-
 
 int main(void)
 {
@@ -120,7 +117,7 @@ int main(void)
                 if (InitFlag == 0) {
                     Pins_PPS_Reset();
                     EUSART1_sendString("\nWelcome to CLC and NCO 2");
-                    //CLC_NCO2_Initialize();
+                    CLC_NCO2_Initialize();
                     InitFlag = 1;
                 }            
                 else if (sw0_flag == 1) {
@@ -128,14 +125,14 @@ int main(void)
                     InitFlag = 0;
                     currentState = CLC_NCO3;
                 }
-                //CLC_NCO2_Calculations();
+                CLC_NCO2_Calculations();
                 break;
 
             case CLC_NCO3:
                 if (InitFlag == 0) {
                     Pins_PPS_Reset();
                     EUSART1_sendString("\nWelcome to CLC and NCO 3");
-                    //CLC_NCO2_Initialize();
+                    //CLC_NCO3_Initialize();
                     InitFlag = 1;
                 }            
                 else if (sw0_flag == 1) {

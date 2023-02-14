@@ -68,31 +68,43 @@ void Timer1_Initialize(void);
     //CLC1 Functions and Declarations
 
 void CLC1_Initialize(void);
+void CLC1_Initialize_CLCNCO1(void);
+void CLC1_Initialize_CLCNCO2(void);
+
 void CLC1_CLCI_SetInterruptHandler(void (* InterruptHandler)(void));
 
     //CLC2 Functions and Declarations
 
 void CLC2_Initialize(void);
+void CLC2_Initialize_CLCNCO1(void);
+void CLC2_Initialize_CLCNCO2(void);
 
     //CLC3 Functions and Declarations
+
+void CLC3_Initialize(void);
+void CLC3_Initialize_CLCNCO2(void);
 
     //NCO1 Functions and Declarations
 void NCO1_Initialize(void);
 
 // Initialization Functions
 void Timer1_Gate_Initialize(void);
-        //CLCNCO1
-        //CLCNCO2
-        //CLCNCO3
+void CLC_NCO1_Initialize(void);
+void CLC_NCO2_Initialize(void);
+//void CLC_NCO3_Initialize(void);
         //CCP
 void IOC_w_Timer_Initialize(void);
 void IOC_wo_Timer_Initialize(void);
 
 //Pins and PPS Functions
 void CLC_NCO1_Pins_PPS(void);
+void CLC_NCO2_Pins_PPS(void);
 
 //Reset-Clear Functions
 void TMR0_Reset(void);
+void TMR1_Reset(void);
+void CLC1_Reset(void);
+void CLC2_Reset(void);
 void IOC_Reset(void);
 void Pins_PPS_Reset(void);
 

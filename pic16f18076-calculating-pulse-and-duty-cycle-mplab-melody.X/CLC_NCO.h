@@ -44,7 +44,7 @@ void CLC_NCO1_Calculations(void);
 void CLC_NCO2_Calculations(void);
 void CLC_NCO3_Calculations(void);
 
-void CLC_NCO1_Initialize(void);
+
 
 
 
@@ -52,8 +52,11 @@ void send_NCO_measurement(void);
 void send_TMR1_measurement(void);
 void clear_NCO_Accumulator(void);
 void clear_TMR1_Value(void);
+void MAX_TMR1_Value(void);
 void send_DC_Calculation(void);
+void send_DC_Calculation_MT(void);
 void send_measurement(void);
+void send_measurement_MT(void);
 void clear_flags(void);
 void setup_for_new_measurement(void);
 
