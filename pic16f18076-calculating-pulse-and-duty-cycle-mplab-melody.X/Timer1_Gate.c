@@ -12,7 +12,6 @@
 #include "mcc_generated_files/system/system.h"
 
 void Timer1_Gate_Calculations(void){
-    //    Timer1_Gate_Initialize();
     // TIMER1 GATE DUTY CYCLE MEASUREMENT //
         TMR1GIF = 0;                            //Clear Gate Flag
         TMR1IF = 0;                             //Clear Timer1 Flag

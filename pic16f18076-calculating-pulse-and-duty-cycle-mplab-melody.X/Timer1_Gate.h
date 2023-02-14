@@ -43,15 +43,6 @@ extern "C" {
 
 void Timer1_Gate_Calculations(void);
 
-extern const struct TMR_INTERFACE Timer1;
-
-void Timer1_StartSinglePulseAcquisition(void);
-void Timer1_Start(void);
-void Timer1_Write(size_t timerVal);
-void Timer1_Stop(void);
-void Timer1_Initialize(void);
-void Timer1_OverflowCallbackRegister(void (* CallbackHandler)(void));
-
 #ifdef	__cplusplus
 }
 #endif /* __cplusplus */

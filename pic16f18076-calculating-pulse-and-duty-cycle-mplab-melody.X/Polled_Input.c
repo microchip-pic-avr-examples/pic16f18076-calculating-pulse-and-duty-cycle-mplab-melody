@@ -11,10 +11,6 @@
 #include "Basic_Init.h"
 #include "mcc_generated_files/system/system.h"
 
-
-
-
-
 void Polled_Input_Calculations(void){  
     uint24_t pulse_count = 0;
     uint24_t period_count = 0;

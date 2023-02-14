@@ -40,8 +40,21 @@
 extern "C" {
 #endif /* __cplusplus */
     
- extern const struct TMR_INTERFACE Timer0;   
- extern const struct TMR_INTERFACE Timer1;
+// Peripheral Functions and Declarations   
+    
+    //Timer 0 Functions and Declarations
+    
+extern const struct TMR_INTERFACE Timer0;      
+void Timer0_Start(void);
+void Timer0_Stop(void);
+void Timer0_OverflowCallbackRegister(void (* CallbackHandler)(void));
+uint16_t Timer0_Read(void);
+void Timer0_Initialize(void);
+void Timer0_Write(size_t timerVal);    
+    
+    //Timer 1 Functions and Declarations
+ 
+extern const struct TMR_INTERFACE Timer1;
 
 void Timer1_StartSinglePulseAcquisition(void);
 void Timer1_Start(void);
@@ -52,31 +65,37 @@ void Timer1_Initialize_CLCNCO1(void);
 void Timer1_OverflowCallbackRegister(void (* CallbackHandler)(void));
 void Timer1_Initialize(void);
 
-void Timer0_Start(void);
-void Timer0_Stop(void);
-void Timer0_OverflowCallbackRegister(void (* CallbackHandler)(void));
-uint16_t Timer0_Read(void);
-void Timer0_Initialize(void);
-void Timer0_Write(size_t timerVal);
+    //CLC1 Functions and Declarations
 
-void NCO1_Initialize(void);
 void CLC1_Initialize(void);
-void CLC2_Initialize(void);
 void CLC1_CLCI_SetInterruptHandler(void (* InterruptHandler)(void));
 
-void CLC_NCO1_Pins_PPS(void);
+    //CLC2 Functions and Declarations
 
+void CLC2_Initialize(void);
+
+    //CLC3 Functions and Declarations
+
+    //NCO1 Functions and Declarations
+void NCO1_Initialize(void);
+
+// Initialization Functions
 void Timer1_Gate_Initialize(void);
-
-void CCP_Initialize(void);
-void CCP_Deinitialize(void);
-
-void TMR0_Reset(void);
+        //CLCNCO1
+        //CLCNCO2
+        //CLCNCO3
+        //CCP
 void IOC_w_Timer_Initialize(void);
 void IOC_wo_Timer_Initialize(void);
-void IOC_Reset(void);
 
-    
+//Pins and PPS Functions
+void CLC_NCO1_Pins_PPS(void);
+
+//Reset-Clear Functions
+void TMR0_Reset(void);
+void IOC_Reset(void);
+void Pins_PPS_Reset(void);
+
 #ifdef	__cplusplus
 }
 #endif /* __cplusplus */

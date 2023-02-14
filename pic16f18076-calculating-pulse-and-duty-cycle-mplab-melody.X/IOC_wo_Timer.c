@@ -11,7 +11,6 @@
 #include "Basic_Init.h"
 #include "mcc_generated_files/system/system.h"
 
-
 void IOC_wo_Timer_Calculations(void){
     IOC_wo_Timer_Initialize();
     uint24_t pulse_count = 0;
@@ -27,8 +26,7 @@ void IOC_wo_Timer_Calculations(void){
         while(PORTBbits.RB5 == HIGH);
         IOCBFbits.IOCBF5 = 0;
         while(!IOCBFbits.IOCBF5);
-        while(IOCBFbits.IOCBF5)
-        {
+        while(IOCBFbits.IOCBF5){
             IOCBFbits.IOCBF5 = 0; 
 
             while(!IOCBFbits.IOCBF5){

@@ -36,19 +36,11 @@
 #include <stdint.h>
 #include <stdio.h>
 
-
-
 #ifdef	__cplusplus
 extern "C" {
 #endif /* __cplusplus */
 
-    
-    
-
-
 void IOC_w_Timer_Calculations(void);
-
-
 
 #ifdef	__cplusplus
 }

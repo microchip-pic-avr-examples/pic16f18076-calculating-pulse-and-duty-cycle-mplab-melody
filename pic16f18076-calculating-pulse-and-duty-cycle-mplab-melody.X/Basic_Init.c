@@ -10,6 +10,76 @@
 #include "Basic_Init.h"
 #include "mcc_generated_files/system/system.h"
 
+// Peripheral Functions and Declarations   
+    
+    //Timer 0 Functions and Declarations
+
+volatile uint16_t timerTMR0ReloadVal16bit;
+
+const struct TMR_INTERFACE Timer0 = {
+    .Initialize = Timer0_Initialize,
+    .Start = Timer0_Start,
+    .Stop = Timer0_Stop,
+    .PeriodCountSet = Timer0_Write,
+    .TimeoutCallbackRegister = Timer0_OverflowCallbackRegister
+};
+
+static void (*Timer0_OverflowCallback)(void);
+static void Timer0_DefaultOverflowCallback(void);
+
+void Timer0_Initialize(void){
+    //TMR0H 255; 
+    TMR0H = 0xFF;
+
+    //TMR0L 240; 
+    TMR0L = 0xF0;
+
+    //T0CS HFINTOSC; T0CKPS 1:1; T0ASYNC not_synchronised; 
+    T0CON1 = 0x70;
+
+    //Load TMRTMR0 value to the 16-bit reload variable
+    timerTMR0ReloadVal16bit = ((uint16_t)TMR0H << 8) | TMR0L;
+
+    //Set default callback for TMR0 overflow interrupt
+    Timer0_OverflowCallbackRegister(Timer0_DefaultOverflowCallback);
+
+    //Clear interrupt flag
+    PIR0bits.TMR0IF = 0;
+
+    //T0OUTPS 1:1; T0EN disabled; T016BIT 16-bit; 
+    T0CON0 = 0x10;
+}
+void Timer0_Start(void){
+    T0CON0bits.T0EN = 1;
+}
+void Timer0_Stop(void){
+    T0CON0bits.T0EN = 0;
+}
+uint16_t Timer0_Read(void){
+    uint16_t readVal;
+    uint8_t readValLow;
+    uint8_t readValHigh;
+
+    readValLow  = TMR0L;
+    readValHigh = TMR0H;
+    readVal  = ((uint16_t)readValHigh << 8) + readValLow;
+
+    return readVal;
+}
+void Timer0_Write(size_t timerVal){
+    TMR0H = timerVal >> 8;
+    TMR0L = (uint8_t) timerVal;
+}
+void Timer0_OverflowCallbackRegister(void (* CallbackHandler)(void)){
+    Timer0_OverflowCallback = CallbackHandler;
+}
+static void Timer0_DefaultOverflowCallback(void){
+    //Add your interrupt code here or
+    //Use Timer0_OverflowCallbackRegister function to use Custom ISR
+}
+
+    //Timer 1 Functions and Declarations
+
 volatile uint16_t timer1ReloadVal;
 
 const struct TMR_INTERFACE Timer1 = {
@@ -127,98 +197,12 @@ void Timer1_Initialize(void){
     TMR1L = 0x1;
 };
 
-void Timer1_Gate_Initialize(void){
-    T1GPPS = 0xD; //RB5->TMR1:T1G;
-    
-    Timer1_Initialize_Timer1Gate(); 
-}
 
-volatile uint16_t timerTMR0ReloadVal16bit;
-
-const struct TMR_INTERFACE Timer0 = {
-    .Initialize = Timer0_Initialize,
-    .Start = Timer0_Start,
-    .Stop = Timer0_Stop,
-    .PeriodCountSet = Timer0_Write,
-    .TimeoutCallbackRegister = Timer0_OverflowCallbackRegister
-};
-
-static void (*Timer0_OverflowCallback)(void);
-static void Timer0_DefaultOverflowCallback(void);
-
-void Timer0_Initialize(void){
-    //TMR0H 255; 
-    TMR0H = 0xFF;
-
-    //TMR0L 240; 
-    TMR0L = 0xF0;
-
-    //T0CS HFINTOSC; T0CKPS 1:1; T0ASYNC not_synchronised; 
-    T0CON1 = 0x70;
-
-    //Load TMRTMR0 value to the 16-bit reload variable
-    timerTMR0ReloadVal16bit = ((uint16_t)TMR0H << 8) | TMR0L;
-
-    //Set default callback for TMR0 overflow interrupt
-    Timer0_OverflowCallbackRegister(Timer0_DefaultOverflowCallback);
-
-    //Clear interrupt flag
-    PIR0bits.TMR0IF = 0;
-
-    //T0OUTPS 1:1; T0EN disabled; T016BIT 16-bit; 
-    T0CON0 = 0x10;
-}
-void Timer0_Start(void){
-    T0CON0bits.T0EN = 1;
-}
-void Timer0_Stop(void){
-    T0CON0bits.T0EN = 0;
-}
-uint16_t Timer0_Read(void){
-    uint16_t readVal;
-    uint8_t readValLow;
-    uint8_t readValHigh;
-
-    readValLow  = TMR0L;
-    readValHigh = TMR0H;
-    readVal  = ((uint16_t)readValHigh << 8) + readValLow;
-
-    return readVal;
-}
-void Timer0_Write(size_t timerVal){
-    TMR0H = timerVal >> 8;
-    TMR0L = (uint8_t) timerVal;
-}
-void Timer0_OverflowCallbackRegister(void (* CallbackHandler)(void)){
-    Timer0_OverflowCallback = CallbackHandler;
-}
-static void Timer0_DefaultOverflowCallback(void){
-    //Add your interrupt code here or
-    //Use Timer0_OverflowCallbackRegister function to use Custom ISR
-}
+    //CLC1 Functions and Declarations
 
 static void (*CLC1_CLCI_InterruptHandler)(void);
 static void CLC1_DefaultCLCI_ISR(void);
 
-void NCO1_Initialize(void){
-
-    //NPWS 1_clk; NCKS CLC1_OUT; 
-    NCO1CLK = 0xA;
-    //NCOACC 0x0; 
-    NCO1ACCU = 0x0;
-    //NCOACC 0x0; 
-    NCO1ACCH = 0x0;
-    //NCOACC 0x0; 
-    NCO1ACCL = 0x0;
-    //NCOINC 0; 
-    NCO1INCU = 0x0;
-    //NCOINC 0; 
-    NCO1INCH = 0x0;
-    //NCOINC 1; 
-    NCO1INCL = 0x1;
-    //NEN disabled; NPOL active_hi; NPFM FDC_mode; 
-    NCO1CON = 0x0;
-}
 void CLC1_Initialize(void){
     
     // SLCT 0x0; 
@@ -253,6 +237,16 @@ void CLC1_Initialize(void){
     // Enabling CLC1 interrupt.
     PIE2bits.CLC1IE = 0;
 }
+void CLC1_CLCI_SetInterruptHandler(void (* InterruptHandler)(void)){
+    CLC1_CLCI_InterruptHandler = InterruptHandler;
+}
+static void CLC1_DefaultCLCI_ISR(void){
+    //Add your interrupt code here or
+    //Use CLC1_CLCI_SetInterruptHandler() function to use Custom ISR
+}
+
+    //CLC2 Functions and Declarations
+
 void CLC2_Initialize(void){
     
     // SLCT 0x1; 
@@ -281,13 +275,53 @@ void CLC2_Initialize(void){
     CLCnCON = 0x85;
 
 }
-void CLC1_CLCI_SetInterruptHandler(void (* InterruptHandler)(void)){
-    CLC1_CLCI_InterruptHandler = InterruptHandler;
+
+    //CLC3 Functions and Declarations
+
+    //NCO1 Functions and Declarations
+
+void NCO1_Initialize(void){
+
+    //NPWS 1_clk; NCKS CLC1_OUT; 
+    NCO1CLK = 0xA;
+    //NCOACC 0x0; 
+    NCO1ACCU = 0x0;
+    //NCOACC 0x0; 
+    NCO1ACCH = 0x0;
+    //NCOACC 0x0; 
+    NCO1ACCL = 0x0;
+    //NCOINC 0; 
+    NCO1INCU = 0x0;
+    //NCOINC 0; 
+    NCO1INCH = 0x0;
+    //NCOINC 1; 
+    NCO1INCL = 0x1;
+    //NEN disabled; NPOL active_hi; NPFM FDC_mode; 
+    NCO1CON = 0x0;
 }
-static void CLC1_DefaultCLCI_ISR(void){
-    //Add your interrupt code here or
-    //Use CLC1_CLCI_SetInterruptHandler() function to use Custom ISR
+
+//Initialization Functions
+
+void Timer1_Gate_Initialize(void){
+    T1GPPS = 0xD; //RB5->TMR1:T1G;
+    
+    Timer1_Initialize_Timer1Gate(); 
 }
+    //CLCNCO1
+    //CLCNCO2
+    //CLCNCO3
+    //CCP
+void IOC_w_Timer_Initialize(void){
+    IOCBP = 0x20;
+    IOCBN = 0x20;    
+    Timer0_Initialize();
+}
+void IOC_wo_Timer_Initialize(void){
+    IOCBP = 0x20;
+    IOCBN = 0x20;
+}
+
+//Pins and PPS Functions
 
 void CLC_NCO1_Pins_PPS(void){
     ANSELAbits.ANSA1 = 0;
@@ -304,31 +338,15 @@ void CLC_NCO1_Pins_PPS(void){
     CLCIN0PPS = 0x2; //RA2->CLC1:CLCIN0;
     CLCIN1PPS = 0x1; //RA1->CLC2:CLCIN1;
 }
-
-
+//Reset-Clear Functions
 
 void TMR0_Reset(void){
     //insert default values for initialization when second CLCNCO3 gets included
 }
-void IOC_w_Timer_Initialize(void){
-    IOCBP = 0x20;
-    IOCBN = 0x20;    
-    Timer0_Initialize();
-}
-
-void IOC_wo_Timer_Initialize(void){
-    IOCBP = 0x20;
-    IOCBN = 0x20;
-}
-
 void IOC_Reset(void){
     IOCBP = 0x00;
     IOCBN = 0x00;
 }
-
-void CCP_Initialize(void){
-    
-}
-void CCP_Deinitialize(void){
-    
+void Pins_PPS_Reset(void){
+    PIN_MANAGER_Initialize();
 }

@@ -42,7 +42,6 @@ extern "C" {
 
 void IOC_wo_Timer_Calculations(void);
 
-
 #ifdef	__cplusplus
 }
 #endif /* __cplusplus */

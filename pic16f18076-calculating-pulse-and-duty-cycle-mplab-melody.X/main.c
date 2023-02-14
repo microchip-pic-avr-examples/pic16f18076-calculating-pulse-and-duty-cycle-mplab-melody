@@ -63,22 +63,12 @@ int main(void)
 {
     SYSTEM_Initialize();
 
-    // If using interrupts in PIC18 High/Low Priority Mode you need to enable the Global High and Low Interrupts 
-    // If using interrupts in PIC Mid-Range Compatibility Mode you need to enable the Global and Peripheral Interrupts 
-    // Use the following macros to: 
-
     // Enable the Global Interrupts 
     INTERRUPT_GlobalInterruptEnable(); 
-
-    // Disable the Global Interrupts 
-    //INTERRUPT_GlobalInterruptDisable(); 
 
     // Enable the Peripheral Interrupts 
     INTERRUPT_PeripheralInterruptEnable(); 
 
-    // Disable the Peripheral Interrupts 
-    //INTERRUPT_PeripheralInterruptDisable(); 
-    
     enum state currentState = PULSE_GENERATOR;
     uint8_t InitFlag = 0;
 
@@ -98,7 +88,8 @@ int main(void)
                 break;
 
             case TIMER1:
-                if (InitFlag == 0) {
+                if (InitFlag == 0) {                    
+                    Pins_PPS_Reset();
                     EUSART1_sendString("\nWelcome to Timer1 Gate");
                     Timer1_Gate_Initialize();
                     InitFlag = 1;
@@ -113,6 +104,7 @@ int main(void)
                 
             case CLC_NCO1:
                 if (InitFlag == 0) {
+                    Pins_PPS_Reset();
                     EUSART1_sendString("\nWelcome to CLC and NCO 1");
                     CLC_NCO1_Initialize();
                     InitFlag = 1;
@@ -126,6 +118,7 @@ int main(void)
                 break;
            case CLC_NCO2:
                 if (InitFlag == 0) {
+                    Pins_PPS_Reset();
                     EUSART1_sendString("\nWelcome to CLC and NCO 2");
                     //CLC_NCO2_Initialize();
                     InitFlag = 1;
@@ -140,6 +133,7 @@ int main(void)
 
             case CLC_NCO3:
                 if (InitFlag == 0) {
+                    Pins_PPS_Reset();
                     EUSART1_sendString("\nWelcome to CLC and NCO 3");
                     //CLC_NCO2_Initialize();
                     InitFlag = 1;
@@ -154,6 +148,7 @@ int main(void)
                 
             case CCP:
                 if (InitFlag == 0) {
+                    Pins_PPS_Reset();
                     EUSART1_sendString("\nWelcome to CCP");
                     //CCP_Initialize();
                     InitFlag = 1;
@@ -167,6 +162,7 @@ int main(void)
                 break;
            case IOC_W_TIMER:
                 if (InitFlag == 0) {
+                    Pins_PPS_Reset();
                     EUSART1_sendString("\nWelcome to IOC with Timer");
                     InitFlag = 1;
                 }            
@@ -180,6 +176,7 @@ int main(void)
 
             case IOC_WO_TIMER:
                 if (InitFlag == 0) {
+                    Pins_PPS_Reset();
                     EUSART1_sendString("\nWelcome to IOC without Timer");
                     InitFlag = 1;
                 }            
@@ -193,6 +190,7 @@ int main(void)
                 
             case POLLED_INPUT:
                 if (InitFlag == 0) {
+                    Pins_PPS_Reset();
                     EUSART1_sendString("\nWelcome to Polled Input");
                     InitFlag = 1;
                 }            
