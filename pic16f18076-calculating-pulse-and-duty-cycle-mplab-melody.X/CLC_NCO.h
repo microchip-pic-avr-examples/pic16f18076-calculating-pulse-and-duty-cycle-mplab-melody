@@ -58,7 +58,9 @@ void send_DC_Calculation_MT(void);
 void send_measurement(void);
 void send_measurement_MT(void);
 void clear_flags(void);
-void setup_for_new_measurement(void);
+void reset_CLC2_CLC3(void);
+void setup_for_new_measurement_CLCNCO1(void);
+void setup_for_new_measurement_CLCNCO2_CLCNCO3(void);
 
 
 #ifdef	__cplusplus

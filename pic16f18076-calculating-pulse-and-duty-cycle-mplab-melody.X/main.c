@@ -98,6 +98,7 @@ int main(void)
                 }
                 Timer1_Gate_Calculations();
                 break;
+                //NOP();
                 
             case CLC_NCO1:
                 if (InitFlag == 0) {
@@ -113,6 +114,7 @@ int main(void)
                 }
                 CLC_NCO1_Calculations();
                 break;
+                
            case CLC_NCO2:
                 if (InitFlag == 0) {
                     Pins_PPS_Reset();

@@ -81,10 +81,28 @@ void clear_flags(void){
     PIR2bits.NCO1IF = 0; 
     uint16_t cycles = 0;
 }
-void setup_for_new_measurement(void){
+void reset_CLC2_CLC3(void){
+    CLCSELECT = 0x1;
+    CLCnPOLbits.G3POL = HIGH;
+    CLCSELECT = 0x2;
+    CLCnPOLbits.G3POL = HIGH;
+    CLCnPOLbits.G3POL = LOW;
+    CLCSELECT = 0x1;
+    CLCnPOLbits.G3POL = LOW;
+}
+void setup_for_new_measurement_CLCNCO1(void){
     clear_NCO_Accumulator();    
     clear_TMR1_Value();
     clear_flags();
+    Timer1_Start();
+    NCO1CONbits.EN = 1; //NCO enable
+}
+void setup_for_new_measurement_CLCNCO2_CLCNCO3(void){
+    clear_NCO_Accumulator();    
+    clear_TMR1_Value();
+    clear_flags();
+    reset_CLC2_CLC3();
+    
     Timer1_Start();
     NCO1CONbits.EN = 1; //NCO enable
 }
@@ -101,7 +119,7 @@ void CLC_NCO1_Calculations(void){
                 Timer1_Stop();
                 
                 send_measurement();
-                setup_for_new_measurement();
+                setup_for_new_measurement_CLCNCO1();
             }
             else if (PIR2bits.NCO1IF){
                 //EUSART1_sendString("\ntest3");
@@ -109,7 +127,7 @@ void CLC_NCO1_Calculations(void){
                 Timer1_Stop();
                 
                 send_measurement();
-                setup_for_new_measurement();
+                setup_for_new_measurement_CLCNCO1();
             }
             else{
                 //EUSART1_sendString("\ntest4");
@@ -117,7 +135,7 @@ void CLC_NCO1_Calculations(void){
                 Timer1_Stop();
                 
                 send_measurement();
-                setup_for_new_measurement();
+                setup_for_new_measurement_CLCNCO1();
             }
         }
         else{
@@ -130,28 +148,28 @@ void CLC_NCO1_Calculations(void){
 }
 void CLC_NCO2_Calculations(void){
         if (PIR1bits.TMR1IF || PIR2bits.NCO1IF || cycles > 99){
-            
+//            EUSART1_sendString("\ntest1");
             if (PIR1bits.TMR1IF){
                 NCO1CONbits.EN = 0;
                 Timer1_Stop();
                 MAX_TMR1_Value();
-                
+//                EUSART1_sendString("\ntest2");
                 send_measurement_MT();
-                setup_for_new_measurement();
+                setup_for_new_measurement_CLCNCO2_CLCNCO3();
             }
             else if (PIR2bits.NCO1IF){
                 NCO1CONbits.EN = 0;
                 Timer1_Stop();
-                
+//                EUSART1_sendString("\ntest3");
                 send_measurement();
-                setup_for_new_measurement();
+                setup_for_new_measurement_CLCNCO2_CLCNCO3();
             }
             else{
                 NCO1CONbits.EN = 0;
                 Timer1_Stop();
-                
+//                EUSART1_sendString("\ntest4");
                 send_measurement();
-                setup_for_new_measurement();
+                setup_for_new_measurement_CLCNCO2_CLCNCO3();
             }
         }
 

@@ -62,6 +62,7 @@ void Timer1_Write(size_t timerVal);
 void Timer1_Stop(void);
 void Timer1_Initialize_Timer1Gate(void);
 void Timer1_Initialize_CLCNCO1(void);
+void Timer1_Initialize_CLCNCO2(void);
 void Timer1_OverflowCallbackRegister(void (* CallbackHandler)(void));
 void Timer1_Initialize(void);
 

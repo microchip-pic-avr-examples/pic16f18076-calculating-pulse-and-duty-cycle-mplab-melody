@@ -613,17 +613,17 @@ void CLC_NCO1_Initialize(void){
     CLC2_Initialize_CLCNCO1();
     Timer1_Initialize_CLCNCO1();
     CLC_NCO1_Pins_PPS();
-    setup_for_new_measurement(); 
+    setup_for_new_measurement_CLCNCO1(); 
 }
 void CLC_NCO2_Initialize(void){
-    T1CON = 0x0;
-    NCO1_Initialize();
+    T1CON = 0x0;//
+    NCO1_Initialize();//
     CLC1_Initialize_CLCNCO2();
     CLC2_Initialize_CLCNCO2();
     CLC3_Initialize_CLCNCO2();
     Timer1_Initialize_CLCNCO2();
     CLC_NCO2_Pins_PPS();
-    setup_for_new_measurement(); 
+    setup_for_new_measurement_CLCNCO2_CLCNCO3(); 
 }
 //void CLC_NCO3_Initialize(void){
 //    T1CON = 0x0;
@@ -652,7 +652,7 @@ void CLC_NCO1_Pins_PPS(void){
     TRISA = 0xDF;//
     TRISC = 0xBB;//
     
-    ANSELA = 0xD9;//
+    ANSELA = 0xD8;//
     ANSELC = 0x3A;//
 
     RA5PPS = 0x01;  //RA5->CLC1:CLC1OUT;
@@ -667,7 +667,7 @@ void CLC_NCO2_Pins_PPS(void){
     TRISB = 0xFD;
     TRISC = 0xBB;
     
-    ANSELA = 0xDB;
+    ANSELA = 0xDA;
     ANSELB = 0xD1;
     ANSELC = 0x3B;
     
