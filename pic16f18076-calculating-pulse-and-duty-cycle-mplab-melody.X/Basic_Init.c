@@ -638,25 +638,6 @@ void NCO1_Initialize_CLCNCO1_CLCNCO2(void){
     //NEN disabled; NPOL active_hi; NPFM FDC_mode; 
     NCO1CON = 0x0;
 }
-//void NCO1_Initialize(void){
-//
-//    //NPWS 1_clk; NCKS CLC1_OUT; 
-//    NCO1CLK = 0xA;
-//    //NCOACC 0x0; 
-//    NCO1ACCU = 0x0;
-//    //NCOACC 0x0; 
-//    NCO1ACCH = 0x0;
-//    //NCOACC 0x0; 
-//    NCO1ACCL = 0x0;
-//    //NCOINC 0; 
-//    NCO1INCU = 0x0;
-//    //NCOINC 0; 
-//    NCO1INCH = 0x0;
-//    //NCOINC 1; 
-//    NCO1INCL = 0x1;
-//    //NEN disabled; NPOL active_hi; NPFM FDC_mode; 
-//    NCO1CON = 0x0;
-//}
 void NCO1_Initialize_CLCNCO3(void){
     //NPWS 1_clk; NCKS FOSC; 
     NCO1CLK = 0x0;
@@ -674,6 +655,68 @@ void NCO1_Initialize_CLCNCO3(void){
     NCO1INCL = 0x8F;
     //NEN enabled; NPOL active_hi; NPFM FDC_mode; 
     NCO1CON = 0x80;
+}
+
+    //CCP1 Functions and Declarations
+void CCP1_Initialize(void) {
+    // Set the CCP1 to the options selected in the User Interface
+    
+    // CCPM 4th rising edge; EN disabled; FMT right_aligned; 
+    CCP1CON = 0x6;
+    
+    // CTS CCP1PPS; 
+    CCP1CAP = 0x0;
+    
+    // CCPRH 0; 
+    CCPR1H = 0x0;
+    
+    // CCPRL 0; 
+    CCPR1L = 0x0;
+
+
+    // Selecting Timer 1
+    CCPTMRS0bits.C1TSEL = 0x1;
+}
+uint16_t CCP1_CaptureRead(void){
+    CCPR1_PERIOD_REG_T module;
+
+    // Copy captured value.
+    module.ccpr1l = CCPR1L;
+    module.ccpr1h = CCPR1H;
+    
+    // Return 16bit captured value
+    return module.ccpr1_16Bit;
+}
+
+    //CCP2 Functions and Declarations
+void CCP2_Initialize(void) {
+    // Set the CCP2 to the options selected in the User Interface
+    
+    // CCPM Every edge; EN disabled; FMT right_aligned; 
+    CCP2CON = 0x3;
+    
+    // CTS CCP2PPS; 
+    CCP2CAP = 0x0;
+    
+    // CCPRH 0; 
+    CCPR2H = 0x0;
+    
+    // CCPRL 0; 
+    CCPR2L = 0x0;
+
+
+    // Selecting Timer 1
+    CCPTMRS0bits.C2TSEL = 0x1;
+}
+uint16_t CCP2_CaptureRead(void){
+    CCPR2_PERIOD_REG_T module;
+
+    // Copy captured value.
+    module.ccpr2l = CCPR2L;
+    module.ccpr2h = CCPR2H;
+    
+    // Return 16bit captured value
+    return module.ccpr2_16Bit;
 }
 
 //Initialization Functions
@@ -713,7 +756,20 @@ void CLC_NCO3_Initialize(void){
     CLC_NCO3_Pins_PPS();
     setup_for_new_measurement_CLCNCO3();
 }
-    //CCP
+void CCP_Initialize(void){
+    
+    CCP1_Initialize();
+    CCP2_Initialize();        
+    
+    CCP2PPS = 0xD;  //RB5->CCP2:CCP2;
+    RB5PPS = 0x0A;  //RB5->CCP1:CCP1;
+    CCP1PPS = 0xD;  //RB5->CCP1:CCP1;
+    
+    
+    PIR2bits.CCP1IF = 0;
+    PIR2bits.CCP2IF = 0;
+    
+}
 void IOC_w_Timer_Initialize(void){
     IOCBP = 0x20;
     IOCBN = 0x20;    

@@ -148,7 +148,7 @@ int main(void)
                 if (InitFlag == 0) {
                     Pins_PPS_Reset();
                     EUSART1_sendString("\nWelcome to CCP");
-                    //CCP_Initialize();
+                    CCP_Initialize();
                     InitFlag = 1;
                 }            
                 else if (sw0_flag == 1) {
@@ -156,7 +156,7 @@ int main(void)
                     InitFlag = 0;
                     currentState = IOC_W_TIMER;
                 }
-                //CCP_Calculations();
+                CCP_Calculations();
                 break;
            case IOC_W_TIMER:
                 if (InitFlag == 0) {

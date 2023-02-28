@@ -41,9 +41,7 @@ extern "C" {
 #endif /* __cplusplus */
 
 
-void CCP_Pulse_Calculation(void);
-void CCP_Duty_Cycle_Calculation(void);
-
+void CCP_Calculations(void);
 
 #ifdef	__cplusplus
 }

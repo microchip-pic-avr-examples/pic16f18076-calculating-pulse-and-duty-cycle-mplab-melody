@@ -93,12 +93,44 @@ void CLC3_Initialize_CLCNCO3(void);
     //NCO1 Functions and Declarations
 void NCO1_Initialize(void);
 
+    //CCP1 Functions and Declarations
+void CCP1_Initialize(void);
+uint16_t CCP1_CaptureRead(void);
+typedef union CCPR1Reg_tag
+{
+   struct
+   {
+      uint8_t ccpr1l; /**< CCPR1L low byte.*/
+      uint8_t ccpr1h; /**< CCPR1H high byte.*/
+   };
+   struct
+   {
+      uint16_t ccpr1_16Bit; /**< CCPR1 16-bit.*/
+   };
+} CCPR1_PERIOD_REG_T ;
+
+    //CCP2 Functions and Declarations
+void CCP2_Initialize(void);
+uint16_t CCP2_CaptureRead(void);
+typedef union CCPR2Reg_tag
+{
+   struct
+   {
+      uint8_t ccpr2l; /**< CCPR2L low byte.*/
+      uint8_t ccpr2h; /**< CCPR2H high byte.*/
+   };
+   struct
+   {
+      uint16_t ccpr2_16Bit; /**< CCPR2 16-bit.*/
+   };
+} CCPR2_PERIOD_REG_T ;
+
 // Initialization Functions
 void Timer1_Gate_Initialize(void);
 void CLC_NCO1_Initialize(void);
 void CLC_NCO2_Initialize(void);
 void CLC_NCO3_Initialize(void);
-        //CCP
+void CCP_Initialize(void);
 void IOC_w_Timer_Initialize(void);
 void IOC_wo_Timer_Initialize(void);
 
