@@ -7,7 +7,7 @@
 
 
 #include <xc.h>
-#include "IOC_w_TIMER.h"
+#include "IOC_w_Timer.h"
 #include "Basic_Init.h"
 #include "mcc_generated_files/system/system.h"
 

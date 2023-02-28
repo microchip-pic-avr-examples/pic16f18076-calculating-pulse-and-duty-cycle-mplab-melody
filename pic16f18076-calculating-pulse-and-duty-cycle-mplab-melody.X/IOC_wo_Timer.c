@@ -22,7 +22,8 @@ void IOC_wo_Timer_Calculations(void){
     uint8_t duty_cycle = 0;
     IOCBFbits.IOCBF5 = 0;
     
-    while(PORTBbits.RB5 == LOW);
+    while(PORTBbits.RB5 == LOW)
+        ; //silences a warning
         while(PORTBbits.RB5 == HIGH);
         IOCBFbits.IOCBF5 = 0;
         while(!IOCBFbits.IOCBF5);
