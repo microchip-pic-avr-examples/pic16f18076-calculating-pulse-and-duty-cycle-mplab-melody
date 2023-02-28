@@ -50,7 +50,8 @@ void Timer0_Stop(void);
 void Timer0_OverflowCallbackRegister(void (* CallbackHandler)(void));
 uint16_t Timer0_Read(void);
 void Timer0_Initialize(void);
-void Timer0_Write(size_t timerVal);    
+void Timer0_Write(size_t timerVal);   
+void Timer0_Initialize_CLCNCO3(void);
     
     //Timer 1 Functions and Declarations
  
@@ -63,6 +64,7 @@ void Timer1_Stop(void);
 void Timer1_Initialize_Timer1Gate(void);
 void Timer1_Initialize_CLCNCO1(void);
 void Timer1_Initialize_CLCNCO2(void);
+void Timer1_Initialize_CLCNCO3(void);
 void Timer1_OverflowCallbackRegister(void (* CallbackHandler)(void));
 void Timer1_Initialize(void);
 
@@ -71,6 +73,7 @@ void Timer1_Initialize(void);
 void CLC1_Initialize(void);
 void CLC1_Initialize_CLCNCO1(void);
 void CLC1_Initialize_CLCNCO2(void);
+void CLC1_Initialize_CLCNCO3(void);
 
 void CLC1_CLCI_SetInterruptHandler(void (* InterruptHandler)(void));
 
@@ -79,11 +82,13 @@ void CLC1_CLCI_SetInterruptHandler(void (* InterruptHandler)(void));
 void CLC2_Initialize(void);
 void CLC2_Initialize_CLCNCO1(void);
 void CLC2_Initialize_CLCNCO2(void);
+void CLC2_Initialize_CLCNCO3(void);
 
     //CLC3 Functions and Declarations
 
 void CLC3_Initialize(void);
 void CLC3_Initialize_CLCNCO2(void);
+void CLC3_Initialize_CLCNCO3(void);
 
     //NCO1 Functions and Declarations
 void NCO1_Initialize(void);
@@ -92,7 +97,7 @@ void NCO1_Initialize(void);
 void Timer1_Gate_Initialize(void);
 void CLC_NCO1_Initialize(void);
 void CLC_NCO2_Initialize(void);
-//void CLC_NCO3_Initialize(void);
+void CLC_NCO3_Initialize(void);
         //CCP
 void IOC_w_Timer_Initialize(void);
 void IOC_wo_Timer_Initialize(void);
@@ -100,12 +105,14 @@ void IOC_wo_Timer_Initialize(void);
 //Pins and PPS Functions
 void CLC_NCO1_Pins_PPS(void);
 void CLC_NCO2_Pins_PPS(void);
+void CLC_NCO3_Pins_PPS(void);
 
 //Reset-Clear Functions
 void TMR0_Reset(void);
 void TMR1_Reset(void);
 void CLC1_Reset(void);
 void CLC2_Reset(void);
+void CLC3_Reset(void);
 void IOC_Reset(void);
 void Pins_PPS_Reset(void);
 

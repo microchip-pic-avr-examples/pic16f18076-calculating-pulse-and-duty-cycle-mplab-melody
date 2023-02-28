@@ -44,23 +44,25 @@ void CLC_NCO1_Calculations(void);
 void CLC_NCO2_Calculations(void);
 void CLC_NCO3_Calculations(void);
 
-
-
-
-
 void send_NCO_measurement(void);
+void send_TMR0_measurement(void);
 void send_TMR1_measurement(void);
 void clear_NCO_Accumulator(void);
+void clear_TMR0_Value(void);
 void clear_TMR1_Value(void);
 void MAX_TMR1_Value(void);
-void send_DC_Calculation(void);
+void send_DC_Calculation_CLCNCO1_CLCNCO2(void);
+void send_DC_Calculation_CLCNCO3(void);
 void send_DC_Calculation_MT(void);
-void send_measurement(void);
+void send_measurement_CLCNCO1_CLCNCO2(void);
+void send_measurement_CLCNCO3(void);
 void send_measurement_MT(void);
-void clear_flags(void);
+void clear_flags_CLCNCO1_CLCNCO2(void);
+void clear_flags_CLCNCO3(void);
 void reset_CLC2_CLC3(void);
 void setup_for_new_measurement_CLCNCO1(void);
-void setup_for_new_measurement_CLCNCO2_CLCNCO3(void);
+void setup_for_new_measurement_CLCNCO2(void);
+void setup_for_new_measurement_CLCNCO3(void);
 
 
 #ifdef	__cplusplus

@@ -98,7 +98,6 @@ int main(void)
                 }
                 Timer1_Gate_Calculations();
                 break;
-                //NOP();
                 
             case CLC_NCO1:
                 if (InitFlag == 0) {
@@ -134,7 +133,7 @@ int main(void)
                 if (InitFlag == 0) {
                     Pins_PPS_Reset();
                     EUSART1_sendString("\nWelcome to CLC and NCO 3");
-                    //CLC_NCO3_Initialize();
+                    CLC_NCO3_Initialize();
                     InitFlag = 1;
                 }            
                 else if (sw0_flag == 1) {
@@ -142,7 +141,7 @@ int main(void)
                     InitFlag = 0;
                     currentState = CCP;
                 }
-                //CLC_NCO1_Calculations();
+                CLC_NCO3_Calculations();
                 break;
                 
             case CCP:
