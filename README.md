@@ -37,7 +37,7 @@ Connect two PIC16F18076 Curiousity Nano board together following the diagram in 
 Make sure to connect the UART pins to a lofic analyzer so that the results can be viewed.
 
 ### Programming
-- Download, install, and open MPLABX IDE version 6.00 (or newer).
+- Download, install, and open MPLABX IDE version 6.0.0 (or newer).
 
 - Download and install the XC8 C-Compiler version 2.36 (or newer).
 
@@ -63,14 +63,13 @@ Wait for the Output tab to show 'Programming Complete' (Figure 5) then proceed t
 
 ## Operation
 
-This example utilizes a button which toggles between the various methods of measuring the pulse width and duty cycle.
+This example utilizes a button which toggles between the various methods of measuring the pulse width and duty cycle (Figure 6). 
 
-### Hardware
-- describe the button
-- talk about how there is only one input signal (from a pulse source) and one output signal (UART viewed by a logic analyzer)
+*Figure 6 -  PIC16F18076 Curiousity Nano Board SW0 Button*
+<!--add figure-->
 
-### Software
-There are nine different modes that are built into this example.  The nine modes are the following: 
+When the button is pressed, it changes the method based on the list below. 
+
 1. Pulse Generator
 2. Timer1 Gate
 3. CLC NCO 1
@@ -81,24 +80,15 @@ There are nine different modes that are built into this example.  The nine modes
 8. IOC without Timer
 9. Polled Input 
 
-The Pulse generator mode is the default mode of this example.  It generates a 1MHz signal with varying duty cycles. The duty cycles range from 10% to 90% at 10% intervals and constantly loop. Each of the subsequent modes can be triggered by the appropriate amount of button presses (the order is the list above). Each mode takes the input signal from the pulse input pin and calculates the pulse, the period, and the duty cycle for the given pulse, and outputs that information to the logic analyser through UART.  The value for duty cycle is an 8-bit value, so a conversion from an 8-bit value to a 0-100% scale will be necessary.  For more in-depth information please refer to the linked application note at the top of this example.
+The Pulse generator mode is the default mode of this example.  It generates a 1MHz signal with varying duty cycles. The duty cycles range from 10% to 90% at 10% intervals and constantly loop. Each of the subsequent modes can be triggered by the appropriate amount of button presses (the order is the list above). Each mode takes the input signal from the pulse input pin and calculates the pulse, the period, and the duty cycle for the given pulse, and outputs that information to the logic analyzer through UART. An example of the UART data can be seen in Figure 7. 
 
+*Figure 7 -  UART on Logic Analyzer*
+<!--add figure-->
 
-- describe what each mode does (overview, not in-depth like the app note) and what to expect from each mode
-- describe the order of the modes
-
-
-<!-- Explain how to operate the example. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
+The value for duty cycle is an 8-bit value, so a conversion from an 8-bit value to a 0-100% scale will be necessary.  For more in-depth information on each of the measurement methods, please refer to the linked application note at the top of this example.
 
 ## Summary
 
-<!-- Summarize what the example has shown -->
+This example has demonstrated sevreral methods of how to measure the pulse width and duty cycle of a pulse on the PIC18F18076 Curiousity Nano Board. 
 
-Note: A second Curiosty Nano Board was used to simulate the input signal at varying duty cycles (10%-90% at 10% intervals).  Replacing the pulse generating Curiosty Nano Board with a different input pulse generator may be advantageous depending on the application.
-
-
-
-Generic Outline:
-- Mention how it is setup so the input signal is on the same pin (or the same signal is chained to several inputs)
-- Mention how each of the sections work
-- Mention how the overall project works
+<!--Note: A second Curiosty Nano Board was used to simulate the input signal at varying duty cycles (10%-90% at 10% intervals).  Replacing the pulse generating Curiosty Nano Board with a different input pulse generator may be advantageous depending on the application. -->
