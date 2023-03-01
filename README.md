@@ -4,8 +4,6 @@
 
 # Various Solutions for Calculating a Pulse and Duty Cycle
 
-<!-- This is where the introduction to the example goes, including mentioning the peripherals used -->
-
 ## Related Documentation
 
 - [PIC16F18076 Data Sheet](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/PIC16F18056-76-28-40-Pin-Microcontroller-Data-Sheet-40002325B.pdf)
