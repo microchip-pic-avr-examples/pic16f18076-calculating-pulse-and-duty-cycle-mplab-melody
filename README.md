@@ -85,55 +85,95 @@ When the button is pressed, it changes the method of measurement based on the li
 9. Polled Input 
 
 ### Pulse Generator
-What does it do:
-Input/Output signals:
-What is should look like:
+The Pulse Generator mode is the default mode for this example.  It generates a 1MHz signal with varying duty cycles. The duty cycles range from 10% to 90% at 10% intervals and constantly loop. This signal will output the pulse to pin RA3.  An example waveform for the pulse generator can be seen in Figure 7. 
+
+*Figure 7 -  Pulse Generator Waveform Example*
 
 ### Timer1 Gate
-What does it do:
-Input/Output signals:
-What is should look like:
+Timer1 Gate is the first of the measuring modes for this example.  This mode uses only the Timer1 Module to measure the pulse width and duty cycle. The pulse (pin RB5) is measured by having the Timer1 Gate close to connect the Timer1 Clock source to the Timer1 counter when the pulse it high. The period is measured in the same way as the pulse, just the specific interrupt flags change.  The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e. 0x80 or 127 equals 50%). For more details please see the 'Timer1_Gate.c' file. An example waveform for the Timer1 Gate can be seen in Figure 8.
+
+*Figure 8 -  Timer1 Gate Waveform Example*
 
 ### CLC NCO 
-description of the varying methods 
+The CLC NCO is the second, third, and fourth measuring methods for this example.  Each of these methods use either two or three CLC modules, the NCO module, and either the Timer1 module and/or the Timer0 module.  
 
 #### CLC NCO 1
+This CLC NCO method uses the CLC1, CLC2, NCO1, and Timer1 modules. The pulse (pin RB5) is measured by...
+
+The period is measured... 
+
+The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e. 0x80 or 127 equals 50%). For more details please see the 'CLC_NCO.c' file. An example waveform for the CLC NCO 1 can be seen in Figure 9.
+
 What does it do:
 Input/Output signals:
 What is should look like:
+
+*Figure 9 -  CLC NCO 1 Waveform Example*
 
 #### CLC NCO 2
+This CLC NCO method uses the CLC1, CLC2, CLC3, NCO1, and Timer1 modules. The pulse (pin RB5) is measured by...
+
+The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e. 0x80 or 127 equals 50%). For more details please see the 'CLC_NCO.c' file. An example waveform for the CLC NCO 2 can be seen in Figure 10.
+
 What does it do:
 Input/Output signals:
 What is should look like:
+
+*Figure 10 -  CLC NCO 2 Waveform Example*
 
 #### CLC NCO 3
+This CLC NCO method uses the CLC1, CLC2, CLC3, NCO1, Timer0, abd Timer1 modules. The pulse (pin RB5) is measured by...
+
+The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e. 0x80 or 127 equals 50%). For more details please see the 'CLC_NCO.c' file. An example waveform for the CLC NCO 3 can be seen in Figure 11.
+
 What does it do:
 Input/Output signals:
 What is should look like:
+
+*Figure 11 -  CLC NCO 3 Waveform Example*
 
 ### CCP
+
+The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e. 0x80 or 127 equals 50%). For more details please see the 'CCP.c' file. An example waveform for the CCP method can be seen in Figure 12.
+
 What does it do:
 Input/Output signals:
 What is should look like:
+
+*Figure 12 -  CCP Waveform Example*
 
 ### IOC with Timer
+
+The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e. 0x80 or 127 equals 50%). For more details please see the 'IOC_w_Timer.c' file. An example waveform for the Interrupt-On-Change with Timer can be seen in Figure 13.
+
 What does it do:
 Input/Output signals:
 What is should look like:
+
+*Figure 13 -  Interrupt-On-Change with Timer Waveform Example*
 
 ### IOC without Timer
+
+The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e. 0x80 or 127 equals 50%). For more details please see the 'IOC_wo_Timer.c' file. An example waveform for the Interrupt-On-Change without Timer can be seen in Figure 14.
+
 What does it do:
 Input/Output signals:
 What is should look like:
+
+*Figure 14 -  Interrupt-On-Change without Timer Waveform Example*
 
 ### Polled Input 
+
+
+The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e. 0x80 or 127 equals 50%). For more details please see the 'Polled_Input.c' file. An example waveform for the Polled Input can be seen in Figure 15.
+
 What does it do:
 Input/Output signals:
 What is should look like:
 
+*Figure 15 -  Polled Input Waveform Example*
 
-The Pulse generator mode is the default mode of this example.  It generates a 1MHz signal with varying duty cycles. The duty cycles range from 10% to 90% at 10% intervals and constantly loop. Each of the subsequent modes can be triggered by the appropriate amount of button presses (the order is the list above). Each mode takes the input signal from the pulse input pin and calculates the pulse, the period, and the duty cycle for the given pulse, and outputs that information to the logic analyzer through UART. An example of the UART data can be seen in Figure 7. 
+Each of the subsequent modes can be triggered by the appropriate amount of button presses (the order is the list above). Each mode takes the input signal from the pulse input pin and calculates the pulse, the period, and the duty cycle for the given pulse, and outputs that information to the logic analyzer through UART. An example of the UART data can be seen in Figure 7. 
 
 *Figure 7 -  UART on Logic Analyzer*
 <!--add figure-->
