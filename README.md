@@ -27,12 +27,13 @@ Many times is it desirable to quantify the pulse width of a periodic signal, suc
 ## Setup
 ### Hardware Connections
 
-Connect two PIC16F18076 Curiousity Nano board together following the diagram in Figure 1.
+Connect two PIC16F18076 Curiousity Nano boards together following the diagram in Figure 1.
 
 *Figure 1 - Building the Circuit*
-<!--add figure-->
 
-Make sure to connect the UART pins to a lofic analyzer so that the results can be viewed.
+![Building the Circuit](images/Building_the_Circuit.png)
+
+Make sure to connect the UART pins to a logic analyzer so that the results can be viewed.
 
 ### Programming
 - Download, install, and open MPLABX IDE version 6.0.0 (or newer).
@@ -42,31 +43,36 @@ Make sure to connect the UART pins to a lofic analyzer so that the results can b
 - Download and Open the 'pic16f18076-calculating-pulse-and-duty-cycle-mplab-melody.X' project as shown in Figure 2.
 
 *Figure 2 - Open Project Menu in MPLABX*
-<!--add figure-->
+
+![Open Project Menu in MPLABX](images/Open_Project_Menu_in_MPLABX.png)
 
 - Once the project is open, select either the 'free' or 'pro' configuration as shown in Figure 3.
 
 *Figure 3 - Select project configuration*
-<!--add figure-->
+
+![Select Project Configuration](images/Select_Project_Configuration.png)
 
 - Program the device by clicking on the "Make and Program Device Main Project" from the taskbar at the top (Figure 4).
 
 *Figure 4 -  Make and Program Device Main Project Button*
-<!--add figure-->
+
+![Make and Program Device Main Project Button](images/Make_and_Program_Device_Main_Project_Button.png)
 
 Wait for the Output tab to show 'Programming Complete' (Figure 5) then proceed to the **Operation** section below.
 
 *Figure 5 -  Programming Complete*
-<!--add figure-->
+
+![Programming Complete](images/Programming_Complete.png)
 
 ## Operation
 
-This example utilizes a button which toggles between the various methods of measuring the pulse width and duty cycle (Figure 6). 
+This example utilizes a button (SW0) which toggles between the various methods of measuring the pulse width and duty cycle (Figure 6). 
 
 *Figure 6 -  PIC16F18076 Curiousity Nano Board SW0 Button*
-<!--add figure-->
 
-When the button is pressed, it changes the method based on the list below. 
+![PIC16F18076 Curiousity Nano Board SW0 Button](images/PIC16F18076_Curiousity_Nano_Board_SW0_Button.png)
+
+When the button is pressed, it changes the method of measurement based on the list below. 
 
 1. Pulse Generator
 2. Timer1 Gate
@@ -78,12 +84,63 @@ When the button is pressed, it changes the method based on the list below.
 8. IOC without Timer
 9. Polled Input 
 
+### Pulse Generator
+What does it do:
+Input/Output signals:
+What is should look like:
+
+### Timer1 Gate
+What does it do:
+Input/Output signals:
+What is should look like:
+
+### CLC NCO 
+description of the varying methods 
+
+#### CLC NCO 1
+What does it do:
+Input/Output signals:
+What is should look like:
+
+#### CLC NCO 2
+What does it do:
+Input/Output signals:
+What is should look like:
+
+#### CLC NCO 3
+What does it do:
+Input/Output signals:
+What is should look like:
+
+### CCP
+What does it do:
+Input/Output signals:
+What is should look like:
+
+### IOC with Timer
+What does it do:
+Input/Output signals:
+What is should look like:
+
+### IOC without Timer
+What does it do:
+Input/Output signals:
+What is should look like:
+
+### Polled Input 
+What does it do:
+Input/Output signals:
+What is should look like:
+
+
 The Pulse generator mode is the default mode of this example.  It generates a 1MHz signal with varying duty cycles. The duty cycles range from 10% to 90% at 10% intervals and constantly loop. Each of the subsequent modes can be triggered by the appropriate amount of button presses (the order is the list above). Each mode takes the input signal from the pulse input pin and calculates the pulse, the period, and the duty cycle for the given pulse, and outputs that information to the logic analyzer through UART. An example of the UART data can be seen in Figure 7. 
 
 *Figure 7 -  UART on Logic Analyzer*
 <!--add figure-->
 
 The value for duty cycle is an 8-bit value, so a conversion from an 8-bit value to a 0-100% scale will be necessary.  For more in-depth information on each of the measurement methods, please refer to the linked application note at the top of this example.
+
+## Results
 
 ## Summary
 
