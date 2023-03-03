@@ -176,14 +176,14 @@ void CLC_NCO1_Calculations(void){
             NCO1CONbits.EN = 0;                             // Stop NCO1
             Timer1_Stop();                                  // Stop Timer1
 
-            send_measurement_CLCNCO1_CLCNCO2();             // Send measurement information over UAT
+            send_measurement_CLCNCO1_CLCNCO2();             // Send measurement information over UART
             setup_for_new_measurement_CLCNCO1();            // Setup for the next measurement
         }
     }
     else{
         cycles++;                                           // Increment cycles
     }    
-   __delay_ms(1);                                           // Delay for 1ms
+   __delay_ms(1);                                           // Wait for 1ms
 }
 void CLC_NCO2_Calculations(void){
     if (PIR1bits.TMR1IF || PIR2bits.NCO1IF || cycles > 99){ // Check that one of the following is true: Timer1 interrupt flag, NCO1 interrupt flag, cycles > 99
@@ -210,7 +210,7 @@ void CLC_NCO2_Calculations(void){
     else{
         cycles++;                                           // Increment cycles
     }
-   __delay_ms(1);                                           // Delay for 1ms
+   __delay_ms(1);                                           // Wait for 1ms
 }
 void CLC_NCO3_Calculations(void){
     if (PIR1bits.TMR1IF || PIR0bits.TMR0IF || cycles > 999){// Check that one of the following is true: Timer1 interrupt flag, Timer0 interrupt flag, cycles > 999
@@ -237,5 +237,5 @@ void CLC_NCO3_Calculations(void){
         else{
             cycles++;                                       // Increment cycles
         }
-       __delay_ms(2);                                       // Delay for 2ms
+       __delay_ms(2);                                       // Wait for 2ms
     }    
