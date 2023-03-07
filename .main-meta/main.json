@@ -4,8 +4,8 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu8.mplabx.project.pic16f18076-calculating-pulse-and-duty-cycle-mplab-melody",
-        "version": " ",
-        "displayName": "",
+        "version": "1.0.0",
+        "displayName": "Various Solutions for Calculating a Pulse and Duty Cycle",
         "projectName": "pic16f18076-calculating-pulse-and-duty-cycle-mplab-melody",
         "shortDescription": "This code example demonstrates several solutions for calculating the pulse width and duty cycle from a signal. Compatibly PIC16F180xx family MCUs are: PIC16F18076",
         "ide": {
@@ -19,12 +19,12 @@
             }
         ],
         "dfp": {
-            "name": "",
-            "semverRange": ""
+            "name": "PIC16F1xxxx_DFP",
+            "semverRange": ">=1.15.191"
         },
         "configurator": {
-            "name": "",
-            "semverRange": ""
+            "name": "MCC",
+            "semverRange": ">=5.1.17"
         },
         "device": {
             "metaDataVersion": "1.0.0",
@@ -37,8 +37,8 @@
             }
         },
         "author": "Jonah Lerner",
-        "peripherals": [],
-        "keywords": [],
+        "peripherals": ["CLC", "TMR", "GPIO", "INT", "NCO", "CCP", "IOC"],
+        "keywords": ["MCC", "CLC", "TMR", "INT", "NCO", "CCP", "IOC"],
         "additionalData": {
             "longDescription": {
                 "metaDataVersion": "1.0.0",
