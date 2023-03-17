@@ -100,7 +100,7 @@ The Timer1 Gate is the first of the measuring methods for this example.  This mo
 ![Timer1 Gate Waveform Example](images/Timer1_Gate_Waveform_Example.png)
 
 ### CLC NCO 
-The CLC NCO is the second, third, and fourth measuring methods for this example.  Each of these methods use either two or three CLC modules, the NCO module, and either the Timer1 module and/or the Timer0 module.  
+The CLC NCO modules are used in the second, third, and fourth measuring methods for this example.  Each of these methods use either two or three CLC modules, the NCO module, and either the Timer1 module and/or the Timer0 module.  
 
 #### CLC NCO 1
 This CLC NCO method uses the CLC1, CLC2, NCO1, and Timer1 modules. The pulse (pin RB5) is measured by the NCO1 module which is clocked by a 4-input AND gate that is configured to CLC1.  The period is measured by starting and stopping Timer1 based on various interrupt flags.  The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e. 0x80 or 127 equals 50%). For more details please see the 'CLC_NCO.c' file. An example waveform for the CLC NCO 1 can be seen in Figure 9.
@@ -121,7 +121,7 @@ This CLC NCO method uses the CLC1, CLC2, CLC3, NCO1, and Timer1 modules. The pul
 This method has additional output pins (other than UART) that provide information on the CLC1OUT status and the CLC2OUT status.  These signals can be monitored in addition to the other signals by the logic analyzer.
 
 #### CLC NCO 3
-This CLC NCO method uses the CLC1, CLC2, CLC3, NCO1, Timer0, abd Timer1 modules. The pulse (pin RB5) is measured by the Timer0 module which is clocked by a 4-input AND date that is configured to CLC1.  The period is measured by starting and stopping Timer1 based on various interrupt flags.  The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e. 0x80 or 127 equals 50%). For more details please see the 'CLC_NCO.c' file. An example waveform for the CLC NCO 3 can be seen in Figure 11.
+This CLC NCO method uses the CLC1, CLC2, CLC3, NCO1, Timer0, and Timer1 modules. The pulse (pin RB5) is measured by the Timer0 module which is clocked by a 4-input AND date that is configured to CLC1.  The period is measured by starting and stopping Timer1 based on various interrupt flags.  The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e. 0x80 or 127 equals 50%). For more details please see the 'CLC_NCO.c' file. An example waveform for the CLC NCO 3 can be seen in Figure 11.
 
 *Figure 11 -  CLC NCO 3 Waveform Example*
 
@@ -130,7 +130,7 @@ This CLC NCO method uses the CLC1, CLC2, CLC3, NCO1, Timer0, abd Timer1 modules.
 This method has additional output pins (other than UART) that provide information on the CLC1OUT status, CLC2OUT status, and the CLC3OUT status.  These signals can be monitored in addition to the other signals by the logic analyzer.
 
 ### CCP
-The CCP is the fifth measuring method for this example.  This method uses the CCP1, CCP2, and Timer1 modules to measure the pulse width and duty cycle. The pulse (pin RB5) is measured by using the CCP2 interrupt flag to save two different values (derived from the Timer1 module) and take the difference between those two values.  The period is measured by using the CCP1 interrupt flag to save two different values (derived from the Timer1 module) and take the difference between those two values.  The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e. 0x80 or 127 equals 50%). For more details please see the 'CCP.c' file. An example waveform for the CCP method can be seen in Figure 12.
+The CCP is the fifth measuring method for this example.  This method uses the CCP1, CCP2, and Timer1 modules to measure the pulse width and duty cycle. The pulse (pin RB5) is measured by using the CCP2 interrupt flag to save two different values (derived from the Timer1 module) and takes the difference between those two values.  The period is measured by using the CCP1 interrupt flag to save two different values (derived from the Timer1 module) and takes the difference between those two values.  The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e. 0x80 or 127 equals 50%). For more details please see the 'CCP.c' file. An example waveform for the CCP method can be seen in Figure 12.
 
 *Figure 12 -  CCP Waveform Example*
 
@@ -151,7 +151,7 @@ The IOC without Timer is the seventh measuring method for this example.  This me
 ![IOC without Timer Waveform Example](images/IOC_without_Timer_Waveform_Example.png)
 
 ### Polled Input 
-The Polled Input is the eighth and final measuring method for this example.  This method does not use any modules, only pin settings, to measure the pulse width and duty cycle. The pulse and period (pin RB5) are measured by incrementing the pulse or period value depending on the state of input signal pin.  The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e. 0x80 or 127 equals 50%). For more details please see the 'Polled_Input.c' file. An example waveform for the Polled Input can be seen in Figure 15.
+The Polled Input is the eighth and final measuring method for this example.  This method does not use any modules, only pin settings, to measure the pulse width and duty cycle. The pulse and period (pin RB5) are measured by incrementing the pulse or period value depending on the state of the input signal pin.  The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e. 0x80 or 127 equals 50%). For more details please see the 'Polled_Input.c' file. An example waveform for the Polled Input can be seen in Figure 15.
 
 *Figure 15 -  Polled Input Waveform Example*
 

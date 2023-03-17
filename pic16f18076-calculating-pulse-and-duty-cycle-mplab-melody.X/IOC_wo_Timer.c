@@ -26,7 +26,7 @@ void IOC_wo_Timer_Calculations(void){
     ;                                                       // Silences a warning
     while(PORTBbits.RB5 == HIGH);                           // Wait for the input signal to go high       
     IOCBFbits.IOCBF5 = 0;                                
-    while(!IOCBFbits.IOCBF5);                               // Wait for the the RB IOC Flag to be triggered 
+    while(!IOCBFbits.IOCBF5);                               // Wait for the the RB5 IOC Flag to be triggered 
     while(IOCBFbits.IOCBF5){                                
         IOCBFbits.IOCBF5 = 0;                             
 
