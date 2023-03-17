@@ -56,7 +56,7 @@ Program the device by clicking on the "Make and Program Device Main Project" fro
 
 *Figure 4 -  Make and Program Device Main Project Button*
 
-![Make and Program Device Main Project Button](images/Make_and_Program_Device_Main_Project_Button.png)
+![Make and Program Device Main Project Button](images/Make_and_Program_device_Main_Project_Button.png)
 
 Wait for the Output tab to show 'Programming Complete' (Figure 5) then proceed to the **Operation** section below.
 
@@ -170,4 +170,3 @@ For more in-depth information on each of the measurement methods, please refer t
 This example has demonstrated sevreral methods of how to measure the pulse width and duty cycle of a pulse on the PIC18F18076 Curiousity Nano Board. 
 
 <!--Note: A second Curiosty Nano Board was used to simulate the input signal at varying duty cycles (10%-90% at 10% intervals).  Replacing the pulse generating Curiosty Nano Board with a different input pulse generator may be advantageous depending on the application. -->
-
