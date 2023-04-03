@@ -151,7 +151,7 @@ The IOC without Timer is the seventh measuring method using the IOC module to me
 ![IOC without Timer Waveform Example](images/IOC_without_Timer_Waveform_Example.png)
 
 ### Polled Input 
-The Polled Input is the eighth and final measuring method, using only pin settings instead of modules to measure the pulse width and duty cycle. The pulse and period (RB5 pin) are measured by incrementing the pulse or period value depending on the state of the input signal pin.  The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e., 0x80 or 127 equals 50%). Refer to the `Polled_Input.c` file for more details. A waveform example for the Polled Input can be seen in Figure 15.
+The Polled Input is the eighth and final measuring method, using only pin settings instead of modules to measure the pulse width and duty cycle. The pulse and period (RB5 pin) are measured by incrementing the pulse or period value depending on the state of the input signal pin.  The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e., 0x80 or 127 equals 50%). Refer to the `Polled_Input.c`(pic16f18076-calculating-and-duty-cycle-mplab-melody.X/Polled_Input.c) file for more details. A waveform example for the Polled Input can be seen in Figure 15.
 
 *Figure 15 -  Polled Input Waveform Example*
 
