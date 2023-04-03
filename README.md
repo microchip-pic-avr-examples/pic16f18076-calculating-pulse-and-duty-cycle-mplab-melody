@@ -52,7 +52,7 @@ Once the project is opened, select either the 'free' or 'pro' configuration as s
 
 ![Select Project Configuration](images/Select_Project_Configuration.png)
 
-Program the device by clicking the **Make and Program Device Main Project** from the taskbar at the top (Figure 4).
+Program the device by clicking **Make and Program Device Main Project** from the taskbar at the top (Figure 4).
 
 *Figure 4 -  Make and Program Device Main Project Button*
 
@@ -85,7 +85,7 @@ Pressing the button changes the method of measurement following the order in the
 9. Polled Input 
 
 ### Pulse Generator
-The Pulse Generator mode is the default mode for this example.  It generates a 1MHz signal with varying duty cycles, ranging from 10% to 90% at 10% intervals on a constant loop. This signal will output the pulse to pin RA3.  A  waveform example for the pulse generator can be seen in Figure 7. 
+The Pulse Generator mode is the default mode for this example.  It generates a 1 MHz signal to the RA3 pin with varying duty cycles, ranging from 10% to 90% at 10% intervals on a constant loop. This signal will output the pulse to pin RA3.  A  waveform example for the pulse generator can be seen in Figure 7. 
 
 *Figure 7 -  Pulse Generator Waveform Example*
 
@@ -100,7 +100,7 @@ The Timer1 (TMR1) Gate is the first measuring method, using the Timer1 module to
 ![Timer1 Gate Waveform Example](images/Timer1_Gate_Waveform_Example.png)
 
 ### CLC NCO 
-The CLC NCO modules are used in the second, third, and fourth measuring methods for this example.  Each of these methods use either two or three CLC modules, the NCO module, and either the Timer1 module and/or the Timer0 (TMR0) module.  
+The CLC NCO modules are used in the second, third, and fourth measuring methods for this example.  Each of these methods use either two or three CLC modules, the NCO module and either the Timer1 module and/or the Timer0 (TMR0) module.  
 
 #### CLC NCO 1
 The CLC NCO method uses the CLC1, CLC2, NCO1 and Timer1 modules. The pulse (RB5 pin) is measured by the NCO1 module which is clocked by a 4-input AND gate that is configured to CLC1.  The period is measured by starting and stopping Timer1 based on various interrupt flags.  The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e., 0x80 or 127 equals 50%). Refer to the 'CLC_NCO.c' file for more details. A waveform example for the CLC NCO 1 can be seen in Figure 9.
@@ -127,7 +127,7 @@ The CLC NCO method uses the CLC1, CLC2, CLC3, NCO1, Timer0 and Timer1 modules. T
 
 ![CLC NCO 3 Waveform Example](images/CLC_NCO_3_Waveform_Example.png)
 
-This method has additional output pins (other than UART) that provide information on the status of CLC1OUT, CLC2OUT, and the CLC3OUT.  These signals can be monitored, in addition to the other signals, by the logic analyzer.
+This method has additional output pins (other than UART) that provide information on the status of CLC1OUT, CLC2OUT and CLC3OUT.  These signals can be monitored, in addition to the other signals, by the logic analyzer.
 
 ### CCP
 The CCP is the fifth measuring method, using the CCP1, CCP2 and Timer1 modules to measure the pulse width and duty cycle. The pulse (RB5 pin) is measured by using the CCP2 interrupt flag to save two different values (derived from the Timer1 module) and then to take the difference between them. The period is measured in the same way, using the CCP1 interrupt flag. The duty cycle is then calculated by taking the pulse and dividing it by the period. The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e., 0x80 or 127 equals 50%). Refer to the CCP.c file for more details. A waveform example for the CCP method can be seen in Figure 12.
@@ -151,7 +151,7 @@ The IOC without Timer is the seventh measuring method using the IOC module to me
 ![IOC without Timer Waveform Example](images/IOC_without_Timer_Waveform_Example.png)
 
 ### Polled Input 
-The Polled Input is the eighth and final measuring method using only pin settings instead of modules, to measure the pulse width and duty cycle. The pulse and period (RB5 pin) are measured by incrementing the pulse or period value depending on the state of the input signal pin.  The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e., 0x80 or 127 equals 50%). Refer to the 'Polled_Input.c' file for more details. A waveform example for the Polled Input can be seen in Figure 15.
+The Polled Input is the eighth and final measuring method, using only pin settings instead of modules to measure the pulse width and duty cycle. The pulse and period (RB5 pin) are measured by incrementing the pulse or period value depending on the state of the input signal pin.  The duty cycle is then calculated by taking the pulse and dividing it by the period.  The code outputs an 8-bit value (0-255) which correlates to 0%-100% (i.e., 0x80 or 127 equals 50%). Refer to the 'Polled_Input.c' file for more details. A waveform example for the Polled Input can be seen in Figure 15.
 
 *Figure 15 -  Polled Input Waveform Example*
 
@@ -167,6 +167,6 @@ Refer to *AN3324 - Various Solutions for Calculating a Pulse and Duty Cycle* for
 
 ## Summary
 
-This example demonstrated several methods of how to measure the pulse width and duty cycle of a pulse on the PIC16F18076 Curiousity Nano Board. 
+This example demonstrated several methods of how to measure the pulse width and duty cycle of a pulse on the PIC16F18076 Curiosity Nano board. 
 
 <!--Note: A second Curiosty Nano Board was used to simulate the input signal at varying duty cycles (10%-90% at 10% intervals).  Replacing the pulse generating Curiosty Nano Board with a different input pulse generator may be advantageous depending on the application. -->
