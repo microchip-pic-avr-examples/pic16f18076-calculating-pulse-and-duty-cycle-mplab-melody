@@ -11,7 +11,7 @@ It is often desirable to quantify the pulse width of a periodic signal, such as 
 
 - [PIC16F18076 Data Sheet](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/PIC16F18056-76-28-40-Pin-Microcontroller-Data-Sheet-40002325B.pdf)
 - [PIC16F18076 Family Product Page](https://www.microchip.com/wwwproducts/en/PIC16F18076)
-- [Various Solutions for Calculating a Pulse and Duty Cycle Application Note](https://www.microchip.com/en-us/application-notes/an3324) <!--UPDATE APP NOTE NUMBER TO WHAT IT SHOULD BE (the new one)-->
+- [Various Solutions for Calculating a Pulse and Duty Cycle Application Note](https://www.microchip.com/en-us/application-notes/an5046)
 
 ## Software Used
 
