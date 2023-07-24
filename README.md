@@ -22,7 +22,7 @@ It is often desirable to quantify the pulse width of a periodic signal, such as 
 
 ## Hardware Used
 
-- PIC16F18076 Curiosity Nano [(DM182029)](https://www.microchip.com/en-us/development-tool/EV53Z50A) (x2)
+- PIC16F18076 Curiosity Nano [(EV53Z50A)](https://www.microchip.com/en-us/development-tool/EV53Z50A) (x2)
 
 ## Setup
 ### Hardware Connections
